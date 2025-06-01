@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { MapPin, Phone, Clock, Instagram, Facebook } from 'lucide-react';
+import { Instagram, Facebook } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -46,7 +46,7 @@ const Contact: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
           <Card className="border-0 bg-white/10 backdrop-blur-sm shadow-2xl animate-slide-in-left">
             <CardContent className="p-8">
@@ -114,64 +114,22 @@ const Contact: React.FC = () => {
             </CardContent>
           </Card>
 
-          {/* Contact Info & QR */}
+          {/* QR and Social */}
           <div className="space-y-8 animate-slide-in-right">
-            {/* Contact Information */}
-            <Card className="border-0 bg-white/10 backdrop-blur-sm shadow-xl">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-playfair font-semibold mb-6 text-center">
-                  Información de Contacto
-                </h3>
-                
-                <div className="space-y-6">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
-                      <MapPin className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">Dirección</h4>
-                      <p className="text-muted-foreground">Av. Belleza 123, Centro, Ciudad</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
-                      <Phone className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">Teléfono</h4>
-                      <p className="text-muted-foreground">+1 (234) 567-8900</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
-                      <Clock className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">Horarios</h4>
-                      <p className="text-muted-foreground">Lun-Sáb: 9:00-19:00</p>
-                      <p className="text-muted-foreground">Dom: 10:00-16:00</p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
             {/* QR Code */}
             <Card className="border-0 bg-white/10 backdrop-blur-sm shadow-xl">
               <CardContent className="p-8 text-center">
-                <h3 className="text-xl font-playfair font-semibold mb-4">
+                <h3 className="text-2xl font-playfair font-semibold mb-6">
                   Escanea para WhatsApp
                 </h3>
-                <div className="flex justify-center mb-4">
+                <div className="flex justify-center mb-6">
                   <img
                     src={generateQRCode()}
                     alt="QR Code para WhatsApp"
                     className="rounded-lg shadow-lg"
                   />
                 </div>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-muted-foreground">
                   Escanea este código QR para contactarnos directamente por WhatsApp
                 </p>
               </CardContent>
@@ -180,25 +138,28 @@ const Contact: React.FC = () => {
             {/* Social Media */}
             <Card className="border-0 bg-white/10 backdrop-blur-sm shadow-xl">
               <CardContent className="p-8 text-center">
-                <h3 className="text-xl font-playfair font-semibold mb-4">
-                  Síguenos
+                <h3 className="text-2xl font-playfair font-semibold mb-6">
+                  Síguenos en Redes
                 </h3>
-                <div className="flex justify-center space-x-4">
+                <div className="flex justify-center space-x-6">
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="w-12 h-12 bg-primary/20 hover:bg-primary/30 rounded-full"
+                    className="w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 rounded-full text-white"
                   >
-                    <Instagram className="w-6 h-6 text-primary" />
+                    <Instagram className="w-8 h-8" />
                   </Button>
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="w-12 h-12 bg-primary/20 hover:bg-primary/30 rounded-full"
+                    className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 rounded-full text-white"
                   >
-                    <Facebook className="w-6 h-6 text-primary" />
+                    <Facebook className="w-8 h-8" />
                   </Button>
                 </div>
+                <p className="text-muted-foreground mt-4">
+                  Mantente al día con nuestras últimas tendencias y promociones
+                </p>
               </CardContent>
             </Card>
           </div>

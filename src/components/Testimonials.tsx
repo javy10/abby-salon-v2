@@ -33,13 +33,28 @@ const Testimonials: React.FC = () => {
       rating: 5,
       image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
       service: 'Manicure'
+    },
+    {
+      name: 'Sofia Hernández',
+      comment: 'Excelente servicio y atención. Los resultados siempre superan mis expectativas. Muy recomendado.',
+      rating: 5,
+      image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+      service: 'Corte y Peinado'
+    },
+    {
+      name: 'Elena Castillo',
+      comment: 'El ambiente del salón es increíble y el personal muy profesional. Salgo siempre sintiéndome renovada.',
+      rating: 5,
+      image: 'https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+      service: 'Tratamiento Capilar'
     }
   ];
 
+  // Auto-scroll carousel
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 5000);
+    }, 3000);
 
     return () => clearInterval(timer);
   }, [testimonials.length]);
@@ -52,8 +67,17 @@ const Testimonials: React.FC = () => {
     ));
   };
 
+  const getVisibleTestimonials = () => {
+    const visible = [];
+    for (let i = 0; i < 3; i++) {
+      const index = (currentIndex + i) % testimonials.length;
+      visible.push({ ...testimonials[index], originalIndex: index });
+    }
+    return visible;
+  };
+
   return (
-    <section id="testimonios" className="py-20 bg-background">
+    <section id="testimonios" className="py-20 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-playfair font-bold mb-4">
@@ -64,40 +88,58 @@ const Testimonials: React.FC = () => {
           </p>
         </div>
 
-        {/* Main Testimonial */}
-        <div className="max-w-4xl mx-auto mb-12">
-          <Card className="border-0 bg-gradient-to-br from-background to-muted/20 shadow-2xl">
-            <CardContent className="p-8 lg:p-12 text-center">
-              <div className="mb-6">
-                <img
-                  src={testimonials[currentIndex].image}
-                  alt={testimonials[currentIndex].name}
-                  className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-primary/20"
-                />
+        {/* Carousel Container */}
+        <div className="relative max-w-7xl mx-auto">
+          <div className="flex transition-transform duration-500 ease-in-out gap-6">
+            {getVisibleTestimonials().map((testimonial, index) => (
+              <div 
+                key={testimonial.originalIndex}
+                className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3"
+                style={{
+                  transform: `translateX(${index === 1 ? '0%' : index === 0 ? '-2%' : '2%'})`,
+                  opacity: index === 1 ? 1 : 0.7,
+                  scale: index === 1 ? 1 : 0.95
+                }}
+              >
+                <Card className="border-0 bg-gradient-to-br from-background to-muted/20 shadow-xl h-full">
+                  <CardContent className="p-8 text-center h-full flex flex-col justify-between">
+                    <div>
+                      <div className="mb-6">
+                        <img
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          className="w-20 h-20 rounded-full mx-auto object-cover border-4 border-primary/20"
+                        />
+                      </div>
+                      
+                      <blockquote className="text-lg text-muted-foreground mb-6 italic leading-relaxed">
+                        "{testimonial.comment}"
+                      </blockquote>
+                    </div>
+                    
+                    <div>
+                      <div className="flex justify-center mb-4">
+                        {renderStars(testimonial.rating)}
+                      </div>
+                      
+                      <div>
+                        <h4 className="text-lg font-semibold text-foreground">
+                          {testimonial.name}
+                        </h4>
+                        <p className="text-primary font-medium">
+                          {testimonial.service}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
-              
-              <blockquote className="text-xl lg:text-2xl text-muted-foreground mb-6 italic leading-relaxed">
-                "{testimonials[currentIndex].comment}"
-              </blockquote>
-              
-              <div className="flex justify-center mb-4">
-                {renderStars(testimonials[currentIndex].rating)}
-              </div>
-              
-              <div>
-                <h4 className="text-lg font-semibold text-foreground">
-                  {testimonials[currentIndex].name}
-                </h4>
-                <p className="text-primary font-medium">
-                  {testimonials[currentIndex].service}
-                </p>
-              </div>
-            </CardContent>
-          </Card>
+            ))}
+          </div>
         </div>
 
-        {/* Testimonial Indicators */}
-        <div className="flex justify-center space-x-2">
+        {/* Indicators */}
+        <div className="flex justify-center space-x-2 mt-8">
           {testimonials.map((_, index) => (
             <button
               key={index}
@@ -108,33 +150,6 @@ const Testimonials: React.FC = () => {
                   : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
               }`}
             />
-          ))}
-        </div>
-
-        {/* All Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
-          {testimonials.map((testimonial, index) => (
-            <Card 
-              key={index}
-              className="border-0 bg-gradient-to-br from-background to-muted/10 hover:shadow-lg transition-all duration-300 animate-scale-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <CardContent className="p-6 text-center">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="w-16 h-16 rounded-full mx-auto object-cover mb-4 border-2 border-primary/20"
-                />
-                <h4 className="font-semibold text-foreground mb-1">{testimonial.name}</h4>
-                <p className="text-sm text-primary mb-3">{testimonial.service}</p>
-                <div className="flex justify-center mb-3">
-                  {renderStars(testimonial.rating)}
-                </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  "{testimonial.comment.substring(0, 80)}..."
-                </p>
-              </CardContent>
-            </Card>
           ))}
         </div>
       </div>
