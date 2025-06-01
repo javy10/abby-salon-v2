@@ -17,24 +17,44 @@ const Hero: React.FC = () => {
     <section 
       id="inicio" 
       ref={elementRef}
-      className={`min-h-screen flex items-center justify-center gradient-bg relative overflow-hidden animate-on-scroll ${
+      className={`min-h-screen flex items-center justify-center relative overflow-hidden animate-on-scroll ${
         isInView ? 'animate animate-hero-entrance' : ''
       }`}
     >
+      {/* Background Video */}
+      <div className="absolute inset-0 w-full h-full">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source 
+            src="https://cdn.pixabay.com/video/2019/07/25/25513-351231409_large.mp4" 
+            type="video/mp4" 
+          />
+          {/* Fallback for browsers that don't support video */}
+          <div className="w-full h-full gradient-bg"></div>
+        </video>
+        {/* Overlay to ensure text readability */}
+        <div className="absolute inset-0 bg-black/30"></div>
+      </div>
+
       {/* Decorative Elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-pink-300/20 rounded-full blur-3xl animate-float"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-300/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute top-20 left-10 w-72 h-72 bg-pink-300/20 rounded-full blur-3xl animate-float z-10"></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-300/20 rounded-full blur-3xl animate-float z-10" style={{ animationDelay: '1s' }}></div>
       
-      <div className="container mx-auto px-4 pt-20">
+      <div className="container mx-auto px-4 pt-20 relative z-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="text-center lg:text-left space-y-8">
             <h1 className="text-5xl lg:text-7xl font-playfair font-bold leading-tight">
-              <span className="block text-foreground mb-2">Belleza que</span>
-              <span className="block gradient-text">Transforma</span>
+              <span className="block text-white mb-2 drop-shadow-lg">Belleza que</span>
+              <span className="block gradient-text drop-shadow-lg">Transforma</span>
             </h1>
             
-            <p className="text-xl text-muted-foreground max-w-lg mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-xl text-white/90 max-w-lg mx-auto lg:mx-0 leading-relaxed drop-shadow-md">
               Descubre tu mejor versión en nuestro exclusivo salón de belleza. 
               Servicios personalizados que realzan tu belleza natural con las últimas tendencias.
             </p>
@@ -52,7 +72,7 @@ const Hero: React.FC = () => {
                 size="lg" 
                 variant="outline"
                 onClick={() => document.querySelector('#servicios')?.scrollIntoView({ behavior: 'smooth' })}
-                className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300"
+                className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300 backdrop-blur-sm"
               >
                 Ver Servicios
               </Button>
