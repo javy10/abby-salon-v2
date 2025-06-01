@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-foreground text-background py-16">
+    <footer className="bg-gray-900 dark:bg-gray-950 text-background py-16">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
                 Bella Studio
               </span>
             </div>
-            <p className="text-gray-200 dark:text-gray-400 leading-relaxed">
+            <p className="text-gray-300 dark:text-gray-400 leading-relaxed">
               Tu salón de belleza de confianza donde la elegancia y el profesionalismo 
               se unen para realzar tu belleza natural.
             </p>
@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
           {/* Services */}
           <div className="space-y-4">
             <h4 className="text-xl font-playfair font-semibold text-white">Servicios</h4>
-            <ul className="space-y-2 text-gray-200 dark:text-gray-400">
+            <ul className="space-y-2 text-gray-300 dark:text-gray-400">
               <li className="hover:text-pink-400 cursor-pointer transition-colors">Corte y Peinado</li>
               <li className="hover:text-pink-400 cursor-pointer transition-colors">Coloración</li>
               <li className="hover:text-pink-400 cursor-pointer transition-colors">Tratamientos Capilares</li>
@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
           {/* Quick Links */}
           <div className="space-y-4">
             <h4 className="text-xl font-playfair font-semibold text-white">Enlaces Rápidos</h4>
-            <ul className="space-y-2 text-gray-200 dark:text-gray-400">
+            <ul className="space-y-2 text-gray-300 dark:text-gray-400">
               <li>
                 <button 
                   onClick={() => document.querySelector('#inicio')?.scrollIntoView({ behavior: 'smooth' })}
@@ -96,7 +96,7 @@ const Footer: React.FC = () => {
           {/* Contact Info */}
           <div className="space-y-4">
             <h4 className="text-xl font-playfair font-semibold text-white">Contacto</h4>
-            <div className="space-y-3 text-gray-200 dark:text-gray-400">
+            <div className="space-y-3 text-gray-300 dark:text-gray-400">
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-pink-400 flex-shrink-0" />
                 <span className="text-sm">Av. Belleza 123, Centro, Ciudad</span>
@@ -114,7 +114,7 @@ const Footer: React.FC = () => {
             {/* Schedule */}
             <div className="space-y-2">
               <h5 className="font-semibold text-white">Horarios:</h5>
-              <div className="text-sm text-gray-200 dark:text-gray-400 space-y-1">
+              <div className="text-sm text-gray-300 dark:text-gray-400 space-y-1">
                 <p>Lunes - Sábado: 9:00 - 19:00</p>
                 <p>Domingo: 10:00 - 16:00</p>
               </div>
@@ -123,12 +123,12 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-600 dark:border-gray-700 mt-12 pt-8">
+        <div className="border-t border-gray-700 dark:border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-gray-200 dark:text-gray-400 text-sm">
+            <div className="text-gray-300 dark:text-gray-400 text-sm">
               © {currentYear} Bella Studio. Todos los derechos reservados.
             </div>
-            <div className="flex items-center space-x-2 text-gray-200 dark:text-gray-400 text-sm">
+            <div className="flex items-center space-x-2 text-gray-300 dark:text-gray-400 text-sm">
               <span>Hecho con</span>
               <Heart className="w-4 h-4 text-pink-400 fill-current" />
               <span>para nuestras clientas</span>
