@@ -1,14 +1,23 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
 const About: React.FC = () => {
+  const { elementRef, isInView } = useIntersectionObserver();
+
   return (
-    <section id="sobre-mi" className="py-20 gradient-bg">
+    <section 
+      id="sobre-mi" 
+      ref={elementRef}
+      className={`py-20 gradient-bg animate-on-scroll ${
+        isInView ? 'animate animate-about-entrance' : ''
+      }`}
+    >
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
-          <div className="relative animate-slide-in-left">
+          <div className="relative">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-600 rounded-3xl blur-2xl opacity-30 transform -rotate-6"></div>
               <img
@@ -20,7 +29,7 @@ const About: React.FC = () => {
           </div>
 
           {/* Content */}
-          <div className="space-y-8 animate-slide-in-right">
+          <div className="space-y-8">
             <div>
               <h2 className="text-4xl lg:text-5xl font-playfair font-bold mb-6">
                 Sobre <span className="gradient-text">Mí</span>

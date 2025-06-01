@@ -76,6 +76,17 @@
   body {
     @apply bg-background text-foreground font-inter;
   }
+
+  /* Scroll Snap */
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+
+  section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
 }
 
 @layer utilities {
@@ -103,7 +114,68 @@
   }
 }
 
-/* Animations */
+/* Section-specific animations */
+@keyframes heroSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes servicesFlipIn {
+  from {
+    opacity: 0;
+    transform: rotateY(-90deg) translateZ(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: rotateY(0) translateZ(0);
+  }
+}
+
+@keyframes aboutBounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-10deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(5deg);
+  }
+  70% {
+    transform: scale(0.9) rotate(-2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes testimonialsSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100px) skewX(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) skewX(0);
+  }
+}
+
+@keyframes contactZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0) rotate(180deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -146,6 +218,27 @@
   }
 }
 
+/* Animation classes */
+.animate-hero-entrance {
+  animation: heroSlideUp 1s ease-out forwards;
+}
+
+.animate-services-entrance {
+  animation: servicesFlipIn 0.8s ease-out forwards;
+}
+
+.animate-about-entrance {
+  animation: aboutBounceIn 1s ease-out forwards;
+}
+
+.animate-testimonials-entrance {
+  animation: testimonialsSlideIn 0.8s ease-out forwards;
+}
+
+.animate-contact-entrance {
+  animation: contactZoomIn 0.8s ease-out forwards;
+}
+
 .animate-fadeIn {
   animation: fadeIn 0.6s ease-out forwards;
 }
@@ -164,4 +257,13 @@
 
 .scroll-smooth {
   scroll-behavior: smooth;
+}
+
+/* Hidden by default for animations */
+.animate-on-scroll {
+  opacity: 0;
+}
+
+.animate-on-scroll.animate {
+  opacity: 1;
 }

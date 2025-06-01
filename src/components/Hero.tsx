@@ -1,8 +1,11 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
 const Hero: React.FC = () => {
+  const { elementRef, isInView } = useIntersectionObserver();
+
   const scrollToContact = () => {
     const element = document.querySelector('#contacto');
     if (element) {
@@ -11,7 +14,13 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="inicio" className="min-h-screen flex items-center justify-center gradient-bg relative overflow-hidden">
+    <section 
+      id="inicio" 
+      ref={elementRef}
+      className={`min-h-screen flex items-center justify-center gradient-bg relative overflow-hidden animate-on-scroll ${
+        isInView ? 'animate animate-hero-entrance' : ''
+      }`}
+    >
       {/* Decorative Elements */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-pink-300/20 rounded-full blur-3xl animate-float"></div>
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-300/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
@@ -19,7 +28,7 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-4 pt-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div className="text-center lg:text-left space-y-8 animate-slide-in-left">
+          <div className="text-center lg:text-left space-y-8">
             <h1 className="text-5xl lg:text-7xl font-playfair font-bold leading-tight">
               <span className="block text-foreground mb-2">Belleza que</span>
               <span className="block gradient-text">Transforma</span>
@@ -51,7 +60,7 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Image */}
-          <div className="relative animate-slide-in-right">
+          <div className="relative">
             <div className="relative w-full max-w-lg mx-auto">
               <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-600 rounded-3xl blur-2xl opacity-30 transform rotate-6"></div>
               <div className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">

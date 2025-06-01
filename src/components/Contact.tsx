@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Instagram, Facebook } from 'lucide-react';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const Contact: React.FC = () => {
     service: '',
     message: ''
   });
+  const { elementRef, isInView } = useIntersectionObserver();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -35,9 +37,15 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contacto" className="py-20 gradient-bg">
+    <section 
+      id="contacto" 
+      ref={elementRef}
+      className={`py-20 gradient-bg animate-on-scroll ${
+        isInView ? 'animate animate-contact-entrance' : ''
+      }`}
+    >
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-playfair font-bold mb-4">
             <span className="gradient-text">Contáctanos</span>
           </h2>
@@ -48,7 +56,7 @@ const Contact: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <Card className="border-0 bg-white/10 backdrop-blur-sm shadow-2xl animate-slide-in-left">
+          <Card className="border-0 bg-white/10 backdrop-blur-sm shadow-2xl">
             <CardContent className="p-8">
               <h3 className="text-2xl font-playfair font-semibold mb-6 text-center">
                 Agenda tu Cita
@@ -115,7 +123,7 @@ const Contact: React.FC = () => {
           </Card>
 
           {/* QR and Social */}
-          <div className="space-y-8 animate-slide-in-right">
+          <div className="space-y-8">
             {/* QR Code */}
             <Card className="border-0 bg-white/10 backdrop-blur-sm shadow-xl">
               <CardContent className="p-8 text-center">

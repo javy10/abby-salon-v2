@@ -1,9 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
 const Testimonials: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { elementRef, isInView } = useIntersectionObserver();
 
   const testimonials = [
     {
@@ -77,9 +79,15 @@ const Testimonials: React.FC = () => {
   };
 
   return (
-    <section id="testimonios" className="py-20 bg-background overflow-hidden">
+    <section 
+      id="testimonios" 
+      ref={elementRef}
+      className={`py-20 bg-background overflow-hidden animate-on-scroll ${
+        isInView ? 'animate animate-testimonials-entrance' : ''
+      }`}
+    >
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-playfair font-bold mb-4">
             Lo que Dicen <span className="gradient-text">Nuestras Clientas</span>
           </h2>
