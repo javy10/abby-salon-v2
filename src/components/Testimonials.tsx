@@ -11,19 +11,21 @@ const Testimonials: React.FC = () => {
   const { t } = useLanguage();
   const { testimonials, hasTestimonials } = useTestimonials();
 
-  // Si no hay testimonios, no renderizar nada
-  if (!hasTestimonials) {
-    return null;
-  }
-
-  // Auto-scroll carousel
+  // Auto-scroll carousel - this hook MUST be called on every render
   useEffect(() => {
+    if (!hasTestimonials) return; // Early return inside useEffect, not in component
+    
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
     }, 3000);
 
     return () => clearInterval(timer);
-  }, [testimonials.length]);
+  }, [testimonials.length, hasTestimonials]);
+
+  // Early return AFTER all hooks have been called
+  if (!hasTestimonials) {
+    return null;
+  }
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
