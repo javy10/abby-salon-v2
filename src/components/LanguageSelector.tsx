@@ -34,12 +34,12 @@ const LanguageSelector: React.FC = () => {
           </div>
         </div>
       </SelectTrigger>
-      <SelectContent className="bg-background border border-border shadow-lg z-50">
+      <SelectContent className="bg-background border border-border shadow-lg z-50 min-w-[180px]">
         {languages.map((lang) => (
           <SelectItem key={lang.code} value={lang.code} className="cursor-pointer">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-3">
               <span className="text-lg">{lang.flag}</span>
-              <span>{lang.name}</span>
+              <span className="font-medium">{lang.name}</span>
             </div>
           </SelectItem>
         ))}

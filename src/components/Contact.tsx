@@ -24,14 +24,14 @@ const Contact: React.FC = () => {
 
   const handleWhatsAppMessage = () => {
     const message = `Hola! Soy ${formData.name || '[Nombre]'}. Me gustaría agendar una cita para ${formData.service || '[Servicio]'}. ${formData.message ? `Mensaje adicional: ${formData.message}` : ''}`;
-    const phoneNumber = '50678335406'; // Número actualizado con código de país
+    const phoneNumber = '50378335406';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
   const generateQRCode = () => {
     const message = "Hola! Me gustaría agendar una cita en Abby's Salon";
-    const phoneNumber = '50678335406'; // Número actualizado con código de país
+    const phoneNumber = '50378335406';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     return `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(whatsappUrl)}`;
   };
@@ -40,7 +40,7 @@ const Contact: React.FC = () => {
     <section 
       id="contacto" 
       ref={elementRef}
-      className={`py-20 gradient-bg animate-on-scroll ${
+      className={`py-20 gradient-bg animate-on-scroll min-h-screen flex items-center ${
         isInView ? 'animate animate-contact-entrance' : ''
       }`}
     >
@@ -153,6 +153,7 @@ const Contact: React.FC = () => {
                   <Button
                     variant="ghost"
                     size="icon"
+                    onClick={() => window.open('https://www.instagram.com/aby_beltran17/', '_blank')}
                     className="w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 rounded-full text-white"
                   >
                     <Instagram className="w-8 h-8" />
@@ -160,6 +161,7 @@ const Contact: React.FC = () => {
                   <Button
                     variant="ghost"
                     size="icon"
+                    onClick={() => window.open('https://www.facebook.com/profile.php?id=100084958413452', '_blank')}
                     className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 rounded-full text-white"
                   >
                     <Facebook className="w-8 h-8" />

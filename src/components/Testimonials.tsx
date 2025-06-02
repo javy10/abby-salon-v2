@@ -11,9 +11,9 @@ const Testimonials: React.FC = () => {
   const { t } = useLanguage();
   const { testimonials, hasTestimonials, loading, error } = useTestimonials();
 
-  // Auto-scroll carousel - este hook DEBE ser llamado en cada render
+  // Auto-scroll carousel
   useEffect(() => {
-    if (!hasTestimonials || loading) return; // Early return dentro de useEffect, no en el componente
+    if (!hasTestimonials || loading) return;
     
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
@@ -41,36 +41,8 @@ const Testimonials: React.FC = () => {
     return visible;
   };
 
-  // Mostrar estado de carga
-  if (loading) {
-    return (
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl lg:text-5xl font-playfair font-bold mb-4">
-            {t('testimonials.title')} <span className="gradient-text">{t('testimonials.subtitle')}</span>
-          </h2>
-          <p className="text-xl text-muted-foreground">Cargando testimonios...</p>
-        </div>
-      </section>
-    );
-  }
-
-  // Mostrar error si hay uno
-  if (error) {
-    return (
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl lg:text-5xl font-playfair font-bold mb-4">
-            {t('testimonials.title')} <span className="gradient-text">{t('testimonials.subtitle')}</span>
-          </h2>
-          <p className="text-xl text-muted-foreground">Error al cargar testimonios: {error}</p>
-        </div>
-      </section>
-    );
-  }
-
-  // No mostrar nada si no hay testimonios
-  if (!hasTestimonials) {
+  // No mostrar nada si está cargando, hay error o no hay testimonios
+  if (loading || error || !hasTestimonials) {
     return null;
   }
 
@@ -78,7 +50,7 @@ const Testimonials: React.FC = () => {
     <section 
       id="testimonios" 
       ref={elementRef}
-      className={`py-20 bg-background overflow-hidden animate-on-scroll ${
+      className={`py-20 bg-background overflow-hidden animate-on-scroll min-h-screen flex items-center ${
         isInView ? 'animate animate-testimonials-entrance' : ''
       }`}
     >
@@ -108,14 +80,6 @@ const Testimonials: React.FC = () => {
                 <Card className="border-0 bg-gradient-to-br from-background to-muted/20 shadow-xl h-full">
                   <CardContent className="p-8 text-center h-full flex flex-col justify-between">
                     <div>
-                      <div className="mb-6">
-                        <img
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          className="w-20 h-20 rounded-full mx-auto object-cover border-4 border-primary/20"
-                        />
-                      </div>
-                      
                       <blockquote className="text-lg text-muted-foreground mb-6 italic leading-relaxed">
                         "{testimonial.comment}"
                       </blockquote>
