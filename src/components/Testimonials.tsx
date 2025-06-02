@@ -9,23 +9,18 @@ const Testimonials: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { elementRef, isInView } = useIntersectionObserver();
   const { t } = useLanguage();
-  const { testimonials, hasTestimonials } = useTestimonials();
+  const { testimonials, hasTestimonials, loading, error } = useTestimonials();
 
-  // Auto-scroll carousel - this hook MUST be called on every render
+  // Auto-scroll carousel - este hook DEBE ser llamado en cada render
   useEffect(() => {
-    if (!hasTestimonials) return; // Early return inside useEffect, not in component
+    if (!hasTestimonials || loading) return; // Early return dentro de useEffect, no en el componente
     
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
     }, 3000);
 
     return () => clearInterval(timer);
-  }, [testimonials.length, hasTestimonials]);
-
-  // Early return AFTER all hooks have been called
-  if (!hasTestimonials) {
-    return null;
-  }
+  }, [testimonials.length, hasTestimonials, loading]);
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
@@ -36,6 +31,8 @@ const Testimonials: React.FC = () => {
   };
 
   const getVisibleTestimonials = () => {
+    if (testimonials.length === 0) return [];
+    
     const visible = [];
     for (let i = 0; i < 3; i++) {
       const index = (currentIndex + i) % testimonials.length;
@@ -43,6 +40,39 @@ const Testimonials: React.FC = () => {
     }
     return visible;
   };
+
+  // Mostrar estado de carga
+  if (loading) {
+    return (
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl lg:text-5xl font-playfair font-bold mb-4">
+            {t('testimonials.title')} <span className="gradient-text">{t('testimonials.subtitle')}</span>
+          </h2>
+          <p className="text-xl text-muted-foreground">Cargando testimonios...</p>
+        </div>
+      </section>
+    );
+  }
+
+  // Mostrar error si hay uno
+  if (error) {
+    return (
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl lg:text-5xl font-playfair font-bold mb-4">
+            {t('testimonials.title')} <span className="gradient-text">{t('testimonials.subtitle')}</span>
+          </h2>
+          <p className="text-xl text-muted-foreground">Error al cargar testimonios: {error}</p>
+        </div>
+      </section>
+    );
+  }
+
+  // No mostrar nada si no hay testimonios
+  if (!hasTestimonials) {
+    return null;
+  }
 
   return (
     <section 

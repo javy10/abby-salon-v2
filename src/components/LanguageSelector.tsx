@@ -25,22 +25,20 @@ const LanguageSelector: React.FC = () => {
 
   return (
     <Select value={language} onValueChange={setLanguage}>
-      <SelectTrigger className="w-[140px] border-0 bg-transparent hover:bg-primary/10">
+      <SelectTrigger className="w-[150px] border-0 bg-transparent hover:bg-primary/10">
         <div className="flex items-center space-x-2">
           <Globe className="h-4 w-4 text-primary" />
-          <SelectValue>
-            <div className="flex items-center space-x-1">
-              <span>{currentLanguage?.flag}</span>
-              <span className="text-sm font-medium">{currentLanguage?.code.toUpperCase()}</span>
-            </div>
-          </SelectValue>
+          <div className="flex items-center space-x-1">
+            <span className="text-lg">{currentLanguage?.flag}</span>
+            <span className="text-sm font-medium">{currentLanguage?.code.toUpperCase()}</span>
+          </div>
         </div>
       </SelectTrigger>
-      <SelectContent className="bg-background border border-border shadow-lg">
+      <SelectContent className="bg-background border border-border shadow-lg z-50">
         {languages.map((lang) => (
           <SelectItem key={lang.code} value={lang.code} className="cursor-pointer">
             <div className="flex items-center space-x-2">
-              <span>{lang.flag}</span>
+              <span className="text-lg">{lang.flag}</span>
               <span>{lang.name}</span>
             </div>
           </SelectItem>

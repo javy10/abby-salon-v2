@@ -10,7 +10,7 @@ const About: React.FC = () => {
     <section 
       id="sobre-mi" 
       ref={elementRef}
-      className={`py-20 gradient-bg animate-on-scroll ${
+      className={`py-20 gradient-bg animate-on-scroll min-h-screen flex items-center ${
         isInView ? 'animate animate-about-entrance' : ''
       }`}
     >

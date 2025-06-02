@@ -24,14 +24,14 @@ const Contact: React.FC = () => {
 
   const handleWhatsAppMessage = () => {
     const message = `Hola! Soy ${formData.name || '[Nombre]'}. Me gustaría agendar una cita para ${formData.service || '[Servicio]'}. ${formData.message ? `Mensaje adicional: ${formData.message}` : ''}`;
-    const phoneNumber = '1234567890'; // Reemplaza con el número real
+    const phoneNumber = '50678335406'; // Número actualizado con código de país
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
   const generateQRCode = () => {
-    const message = "Hola! Me gustaría agendar una cita en Bella Studio";
-    const phoneNumber = '1234567890';
+    const message = "Hola! Me gustaría agendar una cita en Abby's Salon";
+    const phoneNumber = '50678335406'; // Número actualizado con código de país
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     return `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(whatsappUrl)}`;
   };
