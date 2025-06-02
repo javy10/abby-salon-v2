@@ -1,7 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { useTestimonials } from '@/hooks/useTestimonials';
 
 interface HeaderProps {
   isDarkMode: boolean;
@@ -11,6 +13,8 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
+  const { hasTestimonials } = useTestimonials();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,13 +24,21 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const menuItems = [
-    { name: 'Inicio', href: '#inicio' },
-    { name: 'Servicios', href: '#servicios' },
-    { name: 'Sobre Mí', href: '#sobre-mi' },
-    { name: 'Testimonios', href: '#testimonios' },
-    { name: 'Contacto', href: '#contacto' },
-  ];
+  const getMenuItems = () => {
+    const items = [
+      { name: t('nav.home'), href: '#inicio' },
+      { name: t('nav.services'), href: '#servicios' },
+      { name: t('nav.about'), href: '#sobre-mi' },
+      { name: t('nav.contact'), href: '#contacto' },
+    ];
+
+    // Solo agregar testimonios si existen
+    if (hasTestimonials) {
+      items.splice(3, 0, { name: t('nav.testimonials'), href: '#testimonios' });
+    }
+
+    return items;
+  };
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -34,6 +46,10 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
     setIsOpen(false);
+  };
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'es' ? 'en' : 'es');
   };
 
   return (
@@ -54,7 +70,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {menuItems.map((item) => (
+            {getMenuItems().map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
@@ -66,8 +82,17 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
             ))}
           </nav>
 
-          {/* Dark Mode Toggle & Mobile Menu */}
+          {/* Controls */}
           <div className="flex items-center space-x-4">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleLanguage}
+              className="hover:bg-primary/10"
+            >
+              <Globe className="h-5 w-5 text-primary" />
+            </Button>
+
             <Button
               variant="ghost"
               size="icon"
@@ -103,7 +128,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
         {isOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border shadow-lg animate-fade-in">
             <nav className="container mx-auto px-4 py-4">
-              {menuItems.map((item, index) => (
+              {getMenuItems().map((item, index) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}

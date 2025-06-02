@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
@@ -78,8 +79,12 @@
 
   /* Scroll Snap */
   html {
-    scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
+  }
+
+  /* Enable scroll snap only for main sections, not footer */
+  main {
+    scroll-snap-type: y mandatory;
   }
 
   section {
@@ -87,9 +92,10 @@
     scroll-snap-stop: always;
   }
 
-  /* Disable scroll snap for footer */
+  /* Completely disable scroll snap for footer */
   footer {
     scroll-snap-align: none;
+    scroll-snap-stop: normal;
   }
 }
 

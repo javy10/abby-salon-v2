@@ -2,9 +2,11 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Hero: React.FC = () => {
   const { elementRef, isInView } = useIntersectionObserver();
+  const { t } = useLanguage();
 
   const scrollToContact = () => {
     const element = document.querySelector('#contacto');
@@ -22,23 +24,32 @@ const Hero: React.FC = () => {
       }`}
     >
       {/* Background Video */}
-      <div className="absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 w-full h-full z-0">
         <video
           autoPlay
           loop
           muted
           playsInline
+          preload="metadata"
           className="w-full h-full object-cover"
+          onError={(e) => {
+            console.log('Video failed to load, showing fallback');
+            e.currentTarget.style.display = 'none';
+          }}
         >
           <source 
-            src="https://cdn.pixabay.com/video/2019/07/25/25513-351231409_large.mp4" 
+            src="https://videos.pexels.com/video-files/3985554/3985554-uhd_2560_1440_25fps.mp4" 
             type="video/mp4" 
           />
-          {/* Fallback for browsers that don't support video */}
-          <div className="w-full h-full gradient-bg"></div>
+          <source 
+            src="https://videos.pexels.com/video-files/3196284/3196284-sd_640_360_30fps.mp4" 
+            type="video/mp4" 
+          />
         </video>
+        {/* Fallback gradient background */}
+        <div className="absolute inset-0 w-full h-full gradient-bg"></div>
         {/* Overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
       </div>
 
       {/* Decorative Elements */}
@@ -50,13 +61,12 @@ const Hero: React.FC = () => {
           {/* Content */}
           <div className="text-center lg:text-left space-y-8">
             <h1 className="text-5xl lg:text-7xl font-playfair font-bold leading-tight">
-              <span className="block text-white mb-2 drop-shadow-lg">Belleza que</span>
-              <span className="block gradient-text drop-shadow-lg">Transforma</span>
+              <span className="block text-white mb-2 drop-shadow-lg">{t('hero.title1')}</span>
+              <span className="block gradient-text drop-shadow-lg">{t('hero.title2')}</span>
             </h1>
             
             <p className="text-xl text-white/90 max-w-lg mx-auto lg:mx-0 leading-relaxed drop-shadow-md">
-              Descubre tu mejor versión en nuestro exclusivo salón de belleza. 
-              Servicios personalizados que realzan tu belleza natural con las últimas tendencias.
+              {t('hero.description')}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -65,7 +75,7 @@ const Hero: React.FC = () => {
                 onClick={scrollToContact}
                 className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-8 py-6 text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
               >
-                Reservar Cita
+                {t('hero.book')}
               </Button>
               
               <Button 
@@ -74,7 +84,7 @@ const Hero: React.FC = () => {
                 onClick={() => document.querySelector('#servicios')?.scrollIntoView({ behavior: 'smooth' })}
                 className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300 backdrop-blur-sm"
               >
-                Ver Servicios
+                {t('hero.services')}
               </Button>
             </div>
           </div>
