@@ -1,7 +1,7 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-type Language = 'es' | 'en' | 'zh' | 'hi' | 'ar';
+type Language = 'es' | 'en' | 'fr' | 'de' | 'zh';
 
 interface LanguageContextType {
   language: Language;
@@ -52,6 +52,46 @@ const translations = {
     'testimonials.subtitle': 'Clients Say',
     'testimonials.description': 'Our clients\' satisfaction is our greatest reward'
   },
+  fr: {
+    // Header
+    'nav.home': 'Accueil',
+    'nav.services': 'Services',
+    'nav.about': 'À Propos',
+    'nav.testimonials': 'Témoignages',
+    'nav.contact': 'Contact',
+    
+    // Hero
+    'hero.title1': 'Beauté qui',
+    'hero.title2': 'Transforme',
+    'hero.description': 'Découvrez votre meilleure version dans notre salon de beauté exclusif. Services personnalisés qui mettent en valeur votre beauté naturelle avec les dernières tendances.',
+    'hero.book': 'Prendre Rendez-vous',
+    'hero.services': 'Voir Services',
+    
+    // Testimonials
+    'testimonials.title': 'Ce que Disent',
+    'testimonials.subtitle': 'Nos Clientes',
+    'testimonials.description': 'La satisfaction de nos clientes est notre plus grande récompense'
+  },
+  de: {
+    // Header
+    'nav.home': 'Startseite',
+    'nav.services': 'Dienstleistungen',
+    'nav.about': 'Über Mich',
+    'nav.testimonials': 'Bewertungen',
+    'nav.contact': 'Kontakt',
+    
+    // Hero
+    'hero.title1': 'Schönheit die',
+    'hero.title2': 'Verwandelt',
+    'hero.description': 'Entdecken Sie Ihre beste Version in unserem exklusiven Schönheitssalon. Personalisierte Dienstleistungen, die Ihre natürliche Schönheit mit den neuesten Trends unterstreichen.',
+    'hero.book': 'Termin Buchen',
+    'hero.services': 'Services Ansehen',
+    
+    // Testimonials
+    'testimonials.title': 'Was Unsere',
+    'testimonials.subtitle': 'Kunden Sagen',
+    'testimonials.description': 'Die Zufriedenheit unserer Kunden ist unsere größte Belohnung'
+  },
   zh: {
     // Header
     'nav.home': '首页',
@@ -71,46 +111,6 @@ const translations = {
     'testimonials.title': '客户',
     'testimonials.subtitle': '评价',
     'testimonials.description': '客户的满意是我们最大的回报'
-  },
-  hi: {
-    // Header
-    'nav.home': 'होम',
-    'nav.services': 'सेवाएं',
-    'nav.about': 'मेरे बारे में',
-    'nav.testimonials': 'प्रशंसापत्र',
-    'nav.contact': 'संपर्क',
-    
-    // Hero
-    'hero.title1': 'सुंदरता जो',
-    'hero.title2': 'बदल देती है',
-    'hero.description': 'हमारे विशेष ब्यूटी सैलून में अपना सबसे अच्छा रूप खोजें। व्यक्तिगत सेवाएं जो नवीनतम ट्रेंड्स के साथ आपकी प्राकृतिक सुंदरता को बढ़ाती हैं।',
-    'hero.book': 'अपॉइंटमेंट बुक करें',
-    'hero.services': 'सेवाएं देखें',
-    
-    // Testimonials
-    'testimonials.title': 'हमारे ग्राहक',
-    'testimonials.subtitle': 'क्या कहते हैं',
-    'testimonials.description': 'हमारे ग्राहकों की संतुष्टि हमारा सबसे बड़ा इनाम है'
-  },
-  ar: {
-    // Header
-    'nav.home': 'الرئيسية',
-    'nav.services': 'الخدمات',
-    'nav.about': 'عني',
-    'nav.testimonials': 'الشهادات',
-    'nav.contact': 'اتصل بنا',
-    
-    // Hero
-    'hero.title1': 'جمال',
-    'hero.title2': 'يحول',
-    'hero.description': 'اكتشفي أفضل نسخة منك في صالون التجميل الحصري لدينا. خدمات شخصية تبرز جمالك الطبيعي مع أحدث الاتجاهات.',
-    'hero.book': 'احجزي موعد',
-    'hero.services': 'عرض الخدمات',
-    
-    // Testimonials
-    'testimonials.title': 'ما تقوله',
-    'testimonials.subtitle': 'عميلاتنا',
-    'testimonials.description': 'رضا عميلاتنا هو أعظم مكافأة لنا'
   }
 };
 

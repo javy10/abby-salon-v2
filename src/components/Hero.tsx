@@ -37,15 +37,9 @@ const Hero: React.FC = () => {
             src="https://videos.pexels.com/video-files/3196284/3196284-hd_1920_1080_30fps.mp4" 
             type="video/mp4" 
           />
-          <source 
-            src="https://videos.pexels.com/video-files/3985554/3985554-uhd_2560_1440_25fps.mp4" 
-            type="video/mp4" 
-          />
         </video>
-        {/* Fallback gradient background */}
-        <div className="absolute inset-0 w-full h-full gradient-bg"></div>
-        {/* Overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
       {/* Decorative Elements */}

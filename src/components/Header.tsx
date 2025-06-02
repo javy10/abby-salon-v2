@@ -58,10 +58,10 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-lg">B</span>
+              <span className="text-white font-bold text-lg">A</span>
             </div>
             <span className="text-xl font-playfair font-bold gradient-text">
-              Bella Studio
+              Abby's Salon
             </span>
           </div>
 

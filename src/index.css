@@ -77,26 +77,23 @@
     @apply bg-background text-foreground font-inter;
   }
 
-  /* Scroll Snap */
+  /* Scroll Snap Implementation */
   html {
     scroll-behavior: smooth;
-  }
-
-  /* Enable scroll snap for main sections */
-  main {
     scroll-snap-type: y mandatory;
   }
 
-  /* Scroll snap for sections except footer */
-  section:not(#footer) {
+  /* Scroll snap for all main sections including footer */
+  section, footer {
     scroll-snap-align: start;
     scroll-snap-stop: always;
+    min-height: 100vh;
   }
 
-  /* Footer with special scroll behavior */
+  /* Special handling for footer - ensure it stays in place when reached */
   footer {
     scroll-snap-align: end;
-    scroll-snap-stop: always;
+    min-height: auto;
   }
 }
 
