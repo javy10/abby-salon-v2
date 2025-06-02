@@ -82,20 +82,21 @@
     scroll-behavior: smooth;
   }
 
-  /* Enable scroll snap only for main sections, not footer */
+  /* Enable scroll snap for main sections */
   main {
     scroll-snap-type: y mandatory;
   }
 
-  section {
+  /* Scroll snap for sections except footer */
+  section:not(#footer) {
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
 
-  /* Completely disable scroll snap for footer */
+  /* Footer with special scroll behavior */
   footer {
-    scroll-snap-align: none;
-    scroll-snap-stop: normal;
+    scroll-snap-align: end;
+    scroll-snap-stop: always;
   }
 }
 

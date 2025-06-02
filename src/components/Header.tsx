@@ -1,9 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon, Globe } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTestimonials } from '@/hooks/useTestimonials';
+import LanguageSelector from '@/components/LanguageSelector';
 
 interface HeaderProps {
   isDarkMode: boolean;
@@ -13,7 +14,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { language, setLanguage, t } = useLanguage();
+  const { t } = useLanguage();
   const { hasTestimonials } = useTestimonials();
 
   useEffect(() => {
@@ -48,10 +49,6 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
     setIsOpen(false);
   };
 
-  const toggleLanguage = () => {
-    setLanguage(language === 'es' ? 'en' : 'es');
-  };
-
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-lg' : 'bg-transparent'
@@ -84,14 +81,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
 
           {/* Controls */}
           <div className="flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleLanguage}
-              className="hover:bg-primary/10"
-            >
-              <Globe className="h-5 w-5 text-primary" />
-            </Button>
+            <LanguageSelector />
 
             <Button
               variant="ghost"

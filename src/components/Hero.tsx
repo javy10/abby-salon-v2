@@ -30,19 +30,15 @@ const Hero: React.FC = () => {
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="auto"
           className="w-full h-full object-cover"
-          onError={(e) => {
-            console.log('Video failed to load, showing fallback');
-            e.currentTarget.style.display = 'none';
-          }}
         >
           <source 
-            src="https://videos.pexels.com/video-files/3985554/3985554-uhd_2560_1440_25fps.mp4" 
+            src="https://videos.pexels.com/video-files/3196284/3196284-hd_1920_1080_30fps.mp4" 
             type="video/mp4" 
           />
           <source 
-            src="https://videos.pexels.com/video-files/3196284/3196284-sd_640_360_30fps.mp4" 
+            src="https://videos.pexels.com/video-files/3985554/3985554-uhd_2560_1440_25fps.mp4" 
             type="video/mp4" 
           />
         </video>
