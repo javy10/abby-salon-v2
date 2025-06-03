@@ -22,12 +22,20 @@ export const useTestimonials = () => {
   const [error, setError] = useState<string | null>(null);
 
   const services = [
-    'Corte y Color',
-    'Tratamiento Facial',
-    'Maquillaje Nupcial',
-    'Manicure',
-    'Corte y Peinado',
-    'Tratamiento Capilar'
+    'Alisados',
+    'Planchados',
+    'Cortes para Dama',
+    'Baños de Color',
+    'Uñas Acrílicas',
+    'Esmaltados Permanentes',
+    'Pedicure y Manicura',
+    'Baños de Luna',
+    'Extensiones de Pestañas',
+    'Exfoliaciones',
+    'Faciales',
+    'Cejas Permanentes',
+    'Depilaciones',
+    'Maquillaje'
   ];
 
   useEffect(() => {
@@ -42,7 +50,6 @@ export const useTestimonials = () => {
 
         const data: ApiTestimonial[] = await response.json();
         
-        // Si no hay datos o el array está vacío
         if (!data || data.length === 0) {
           setTestimonials([]);
           setHasTestimonials(false);
@@ -51,7 +58,6 @@ export const useTestimonials = () => {
           return;
         }
         
-        // Transformar los datos de la API al formato requerido
         const transformedTestimonials: Testimonial[] = data.map((item, index) => ({
           name: item.nombre,
           comment: item.opinion,
@@ -73,6 +79,11 @@ export const useTestimonials = () => {
     };
 
     fetchTestimonials();
+
+    // Configurar polling para actualizar automáticamente cada 30 segundos
+    const interval = setInterval(fetchTestimonials, 30000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return {

@@ -94,9 +94,6 @@ const Testimonials: React.FC = () => {
                         <h4 className="text-lg font-semibold text-foreground">
                           {testimonial.name}
                         </h4>
-                        <p className="text-primary font-medium">
-                          {testimonial.service}
-                        </p>
                       </div>
                     </div>
                   </CardContent>
