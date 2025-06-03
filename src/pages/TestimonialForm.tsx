@@ -3,89 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Switch } from '@/components/ui/switch';
-import { Globe, Moon, Sun } from 'lucide-react';
 import Swal from 'sweetalert2';
-
-const translations = {
-  es: {
-    title: 'Comparte tu',
-    titleHighlight: 'Opinión',
-    subtitle: 'Nos interesa conocer tu experiencia con nosotros',
-    nameLabel: 'Nombre y Apellido',
-    namePlaceholder: 'Ingresa tu nombre y apellido',
-    opinionLabel: 'Ingresa tu opinión',
-    opinionPlaceholder: 'Escribe tu opinión aquí',
-    ratingLabel: 'Califica el servicio obtenido',
-    cancel: 'Cancelar',
-    submit: 'Enviar Mi Opinión',
-    submitting: 'Enviando...',
-    characters: 'caracteres',
-    ratings: {
-      1: 'Muy malo',
-      2: 'Malo', 
-      3: 'Regular',
-      4: 'Bueno',
-      5: 'Excelente'
-    },
-    success: {
-      title: '¡Gracias por tu opinión!',
-      text: 'Tu testimonio ha sido guardado exitosamente.'
-    },
-    error: {
-      title: 'Error',
-      text: 'No se pudo guardar tu opinión. Por favor intenta nuevamente.'
-    },
-    validation: {
-      nameMin: 'El nombre debe tener al menos 2 caracteres',
-      opinionMin: 'La opinión debe tener al menos 10 caracteres',
-      opinionMax: 'La opinión no puede exceder 250 caracteres',
-      ratingMin: 'Debes seleccionar una calificación',
-      ratingMax: 'La calificación máxima es 5'
-    }
-  },
-  en: {
-    title: 'Share your',
-    titleHighlight: 'Opinion',
-    subtitle: 'We are interested in knowing your experience with us',
-    nameLabel: 'Full Name',
-    namePlaceholder: 'Enter your full name',
-    opinionLabel: 'Enter your opinion',
-    opinionPlaceholder: 'Write your opinion here',
-    ratingLabel: 'Rate the service received',
-    cancel: 'Cancel',
-    submit: 'Send My Opinion',
-    submitting: 'Sending...',
-    characters: 'characters',
-    ratings: {
-      1: 'Very bad',
-      2: 'Bad',
-      3: 'Regular',
-      4: 'Good',
-      5: 'Excellent'
-    },
-    success: {
-      title: 'Thank you for your opinion!',
-      text: 'Your testimonial has been saved successfully.'
-    },
-    error: {
-      title: 'Error',
-      text: 'Could not save your opinion. Please try again.'
-    },
-    validation: {
-      nameMin: 'Name must have at least 2 characters',
-      opinionMin: 'Opinion must have at least 10 characters',
-      opinionMax: 'Opinion cannot exceed 250 characters',
-      ratingMin: 'You must select a rating',
-      ratingMax: 'Maximum rating is 5'
-    }
-  }
-};
+import FormHeader from '@/components/testimonial-form/FormHeader';
+import StarRating from '@/components/testimonial-form/StarRating';
+import { translations } from '@/components/testimonial-form/translations';
 
 const TestimonialForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -191,64 +117,23 @@ const TestimonialForm: React.FC = () => {
     form.setValue('calificacion', rating);
   };
 
-  const renderStars = () => {
-    return Array.from({ length: 5 }, (_, index) => {
-      const starNumber = index + 1;
-      return (
-        <button
-          key={index}
-          type="button"
-          onClick={() => handleStarClick(starNumber)}
-          className={`text-4xl transition-all duration-300 hover:scale-125 transform ${
-            starNumber <= selectedRating 
-              ? 'text-yellow-400 animate-pulse' 
-              : 'text-gray-400 hover:text-yellow-300'
-          }`}
-        >
-          ★
-        </button>
-      );
-    });
-  };
-
   return (
     <div className="min-h-screen bg-pink-50 dark:bg-gray-900 flex items-center justify-center p-4 transition-all duration-500">
       <div className={`w-full max-w-md transform transition-all duration-1000 ${
         isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'
       }`}>
         <Card className="border-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black shadow-2xl backdrop-blur-lg animate-fade-in">
-          <CardHeader className="text-center pb-6 animate-slide-in-from-top">
-            {/* Controls Bar inside form */}
-            <div className="flex items-center justify-end space-x-4 mb-4">
-              {/* Language Toggle */}
-              <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1 border border-white/20">
-                <Globe className="h-3 w-3 text-white" />
-                <span className="text-xs font-medium text-white">{language.toUpperCase()}</span>
-                <Switch 
-                  checked={language === 'en'} 
-                  onCheckedChange={toggleLanguage}
-                  className="scale-75"
-                />
-              </div>
-              
-              {/* Theme Toggle */}
-              <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1 border border-white/20">
-                {isDarkMode ? <Moon className="h-3 w-3 text-white" /> : <Sun className="h-3 w-3 text-white" />}
-                <Switch 
-                  checked={isDarkMode} 
-                  onCheckedChange={toggleDarkMode}
-                  className="scale-75"
-                />
-              </div>
-            </div>
-
-            <CardTitle className="text-3xl font-playfair font-bold mb-2 animate-fade-in text-white">
-              {t.title} <span className="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">{t.titleHighlight}</span>
-            </CardTitle>
-            <p className="text-gray-300 animate-fade-in animation-delay-200">
-              {t.subtitle}
-            </p>
-          </CardHeader>
+          <FormHeader
+            language={language}
+            isDarkMode={isDarkMode}
+            onToggleLanguage={toggleLanguage}
+            onToggleDarkMode={toggleDarkMode}
+            translations={{
+              title: t.title,
+              titleHighlight: t.titleHighlight,
+              subtitle: t.subtitle
+            }}
+          />
           
           <CardContent className="space-y-6 animate-slide-in-from-bottom">
             <Form {...form}>
@@ -303,22 +188,17 @@ const TestimonialForm: React.FC = () => {
                   control={form.control}
                   name="calificacion"
                   render={() => (
-                    <FormItem className="animate-scale-in animation-delay-500">
+                    <FormItem>
                       <FormLabel className="text-gray-200 font-medium">
                         {t.ratingLabel}
                       </FormLabel>
                       <FormControl>
-                        <div className="flex justify-center space-x-2 py-4">
-                          {renderStars()}
-                        </div>
+                        <StarRating
+                          selectedRating={selectedRating}
+                          onStarClick={handleStarClick}
+                          translations={{ ratings: t.ratings }}
+                        />
                       </FormControl>
-                      <div className="text-center">
-                        {selectedRating > 0 && (
-                          <span className="text-sm text-gray-400 animate-fade-in">
-                            {t.ratings[selectedRating as keyof typeof t.ratings]}
-                          </span>
-                        )}
-                      </div>
                       <FormMessage />
                     </FormItem>
                   )}

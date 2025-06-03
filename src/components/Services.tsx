@@ -19,7 +19,7 @@ const Services: React.FC = () => {
     {
       title: 'Alisado Permanente',
       description: 'Técnicas avanzadas de alisado permanente para resultados duraderos.',
-      image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $80',
       duration: '180 min',
       category: 'alisados'
@@ -27,7 +27,7 @@ const Services: React.FC = () => {
     {
       title: 'Alisado Natural',
       description: 'Alisado natural sin químicos agresivos para cabellos sensibles.',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $80',
       duration: '180 min',
       category: 'alisados'
@@ -37,7 +37,7 @@ const Services: React.FC = () => {
     {
       title: 'Planchado Profesional',
       description: 'Planchado profesional para un cabello sedoso y brillante.',
-      image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $25',
       duration: '45 min',
       category: 'planchados'
@@ -53,7 +53,7 @@ const Services: React.FC = () => {
     {
       title: 'Planchado para Eventos',
       description: 'Planchado especializado para eventos y ocasiones especiales.',
-      image: 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $25',
       duration: '45 min',
       category: 'planchados'
@@ -183,7 +183,7 @@ const Services: React.FC = () => {
     {
       title: 'Manicura Francesa',
       description: 'Manicura y pedicura francesa con acabado profesional.',
-      image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      image: 'https://images.unsplash.com/photo-1629198688000-71f23e745b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $30',
       duration: '75 min',
       category: 'pedicure'
@@ -297,7 +297,7 @@ const Services: React.FC = () => {
     {
       title: 'Diseño con Henna',
       description: 'Diseño y tinte de cejas con henna natural de larga duración.',
-      image: 'https://images.unsplash.com/photo-1514511819738-9bf5ba7abaa6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      image: 'https://images.unsplash.com/photo-1571804626047-90ca665f2ac0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $30',
       duration: '45 min',
       category: 'cejas'
@@ -331,7 +331,7 @@ const Services: React.FC = () => {
     {
       title: 'Depilación Corporal',
       description: 'Depilación corporal completa con productos hipoalergénicos.',
-      image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      image: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $20',
       duration: '30 min',
       category: 'depilacion'
@@ -339,7 +339,7 @@ const Services: React.FC = () => {
     {
       title: 'Técnicas Avanzadas',
       description: 'Técnicas avanzadas de depilación para resultados duraderos.',
-      image: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      image: 'https://images.unsplash.com/photo-1609592328996-39afa59bf49d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $20',
       duration: '30 min',
       category: 'depilacion'
@@ -349,7 +349,7 @@ const Services: React.FC = () => {
     {
       title: 'Maquillaje para Eventos',
       description: 'Maquillaje profesional para eventos, bodas y ocasiones especiales.',
-      image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $40',
       duration: '60 min',
       category: 'maquillaje'
