@@ -7,80 +7,382 @@ const Services: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('todos');
 
   const services = [
+    // Alisados
     {
-      title: 'Corte y Peinado',
-      description: 'Cortes modernos y peinados elegantes que realzan tu personalidad única.',
+      title: 'Alisados',
+      description: 'Alisados profesionales con tratamientos de queratina para cabello liso y manejable.',
       image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-      price: 'Desde $45',
-      duration: '60 min',
+      price: 'Desde $80',
+      duration: '180 min',
       category: 'cabello'
     },
     {
-      title: 'Coloración',
-      description: 'Técnicas avanzadas de coloración, mechas y balayage para un look espectacular.',
+      title: 'Alisados',
+      description: 'Técnicas avanzadas de alisado permanente para resultados duraderos.',
       image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $80',
-      duration: '120 min',
+      duration: '180 min',
       category: 'cabello'
     },
     {
-      title: 'Tratamientos Capilares',
-      description: 'Tratamientos nutritivos y reparadores para cabello dañado y deshidratado.',
+      title: 'Alisados',
+      description: 'Alisado natural sin químicos agresivos para cabellos sensibles.',
       image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-      price: 'Desde $35',
+      price: 'Desde $80',
+      duration: '180 min',
+      category: 'cabello'
+    },
+
+    // Planchados
+    {
+      title: 'Planchados',
+      description: 'Planchado profesional para un cabello sedoso y brillante.',
+      image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $25',
       duration: '45 min',
       category: 'cabello'
     },
     {
-      title: 'Maquillaje Profesional',
-      description: 'Maquillaje para eventos especiales, bodas y sesiones fotográficas.',
-      image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-      price: 'Desde $60',
-      duration: '90 min',
-      category: 'maquillaje'
+      title: 'Planchados',
+      description: 'Planchado con protección térmica para cuidar tu cabello.',
+      image: 'https://images.unsplash.com/photo-1594736797933-d0beb67c3e71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $25',
+      duration: '45 min',
+      category: 'cabello'
     },
     {
-      title: 'Manicure y Pedicure',
-      description: 'Cuidado completo de uñas con técnicas de gel, acrílico y nail art.',
+      title: 'Planchados',
+      description: 'Planchado especializado para eventos y ocasiones especiales.',
+      image: 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $25',
+      duration: '45 min',
+      category: 'cabello'
+    },
+
+    // Cortes para Dama
+    {
+      title: 'Cortes para Dama',
+      description: 'Cortes modernos y elegantes adaptados a tu estilo personal.',
+      image: 'https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $35',
+      duration: '60 min',
+      category: 'cabello'
+    },
+    {
+      title: 'Cortes para Dama',
+      description: 'Cortes de tendencia con técnicas profesionales de estilismo.',
+      image: 'https://images.unsplash.com/photo-1457131760772-7017c6180f05?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $35',
+      duration: '60 min',
+      category: 'cabello'
+    },
+    {
+      title: 'Cortes para Dama',
+      description: 'Cortes personalizados según la forma de tu rostro.',
+      image: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $35',
+      duration: '60 min',
+      category: 'cabello'
+    },
+
+    // Baños de Color
+    {
+      title: 'Baños de Color de Cabello',
+      description: 'Coloración profesional con productos de alta calidad.',
+      image: 'https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $60',
+      duration: '120 min',
+      category: 'cabello'
+    },
+    {
+      title: 'Baños de Color de Cabello',
+      description: 'Técnicas de balayage y mechas para looks naturales.',
+      image: 'https://images.unsplash.com/photo-1567013127542-490d757e51cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $60',
+      duration: '120 min',
+      category: 'cabello'
+    },
+    {
+      title: 'Baños de Color de Cabello',
+      description: 'Coloración fantasía y colores vibrantes.',
+      image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $60',
+      duration: '120 min',
+      category: 'cabello'
+    },
+
+    // Uñas Acrílicas
+    {
+      title: 'Uñas Acrílicas',
+      description: 'Extensiones acrílicas duraderas con diseños personalizados.',
       image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $40',
+      duration: '90 min',
+      category: 'unas'
+    },
+    {
+      title: 'Uñas Acrílicas',
+      description: 'Uñas acrílicas con nail art y decoraciones especiales.',
+      image: 'https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $40',
+      duration: '90 min',
+      category: 'unas'
+    },
+    {
+      title: 'Uñas Acrílicas',
+      description: 'Técnicas avanzadas para uñas acrílicas resistentes.',
+      image: 'https://images.unsplash.com/photo-1632345031435-8727f6897d53?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $40',
+      duration: '90 min',
+      category: 'unas'
+    },
+
+    // Esmaltados Permanentes
+    {
+      title: 'Esmaltados Permanentes',
+      description: 'Esmaltado gel que dura hasta 3 semanas sin descascararse.',
+      image: 'https://images.unsplash.com/photo-1607779097040-26e80aa78e66?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $25',
       duration: '60 min',
       category: 'unas'
     },
     {
-      title: 'Facial y Limpieza',
-      description: 'Tratamientos faciales personalizados para todo tipo de piel.',
+      title: 'Esmaltados Permanentes',
+      description: 'Amplia gama de colores y acabados para esmaltado permanente.',
+      image: 'https://images.unsplash.com/photo-1599948128020-9d3d2e116df5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $25',
+      duration: '60 min',
+      category: 'unas'
+    },
+    {
+      title: 'Esmaltados Permanentes',
+      description: 'Esmaltado semipermanente con tratamiento nutritivo.',
+      image: 'https://images.unsplash.com/photo-1617620165588-36c73ce89adb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $25',
+      duration: '60 min',
+      category: 'unas'
+    },
+
+    // Pedicure y Manicura
+    {
+      title: 'Pedicure y Manicura',
+      description: 'Cuidado completo de manos y pies con tratamientos relajantes.',
+      image: 'https://images.unsplash.com/photo-1588990715767-52d0e5c657b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $30',
+      duration: '75 min',
+      category: 'unas'
+    },
+    {
+      title: 'Pedicure y Manicura',
+      description: 'Spa de manos y pies con exfoliación y hidratación profunda.',
+      image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $30',
+      duration: '75 min',
+      category: 'unas'
+    },
+    {
+      title: 'Pedicure y Manicura',
+      description: 'Manicura y pedicura francesa con acabado profesional.',
+      image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $30',
+      duration: '75 min',
+      category: 'unas'
+    },
+
+    // Baños de Luna
+    {
+      title: 'Baños de Luna',
+      description: 'Tratamiento relajante con terapia lunar para renovar energías.',
       image: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $70',
+      duration: '90 min',
+      category: 'relajacion'
+    },
+    {
+      title: 'Baños de Luna',
+      description: 'Ritual de luna llena con aceites esenciales y minerales.',
+      image: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $70',
+      duration: '90 min',
+      category: 'relajacion'
+    },
+    {
+      title: 'Baños de Luna',
+      description: 'Experiencia sensorial única con cristales y aromaterapia.',
+      image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $70',
+      duration: '90 min',
+      category: 'relajacion'
+    },
+
+    // Extensiones de Pestañas
+    {
+      title: 'Extensiones de Pestañas',
+      description: 'Extensiones de pestañas pelo a pelo para una mirada espectacular.',
+      image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $50',
+      duration: '120 min',
+      category: 'pestanas'
+    },
+    {
+      title: 'Extensiones de Pestañas',
+      description: 'Técnica híbrida para volumen y longitud natural.',
+      image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $50',
+      duration: '120 min',
+      category: 'pestanas'
+    },
+    {
+      title: 'Extensiones de Pestañas',
+      description: 'Extensiones rusas para máximo volumen y dramatismo.',
+      image: 'https://images.unsplash.com/photo-1586438689892-d7e9b7ad9c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $50',
+      duration: '120 min',
+      category: 'pestanas'
+    },
+
+    // Exfoliaciones
+    {
+      title: 'Exfoliaciones en Todo el Cuerpo',
+      description: 'Exfoliación corporal completa para piel suave y renovada.',
+      image: 'https://images.unsplash.com/photo-1583001931096-959e9a1a6223?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $55',
+      duration: '60 min',
+      category: 'corporal'
+    },
+    {
+      title: 'Exfoliaciones en Todo el Cuerpo',
+      description: 'Peeling corporal con sales marinas y aceites nutritivos.',
+      image: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $55',
+      duration: '60 min',
+      category: 'corporal'
+    },
+    {
+      title: 'Exfoliaciones en Todo el Cuerpo',
+      description: 'Tratamiento detox con scrub natural y masaje relajante.',
+      image: 'https://images.unsplash.com/photo-1592053420092-eb861d8a6f97?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $55',
+      duration: '60 min',
+      category: 'corporal'
+    },
+
+    // Faciales
+    {
+      title: 'Faciales (Caballeros y Damas)',
+      description: 'Limpieza facial profunda adaptada a cada tipo de piel.',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $45',
       duration: '75 min',
       category: 'facial'
     },
     {
-      title: 'Depilación',
-      description: 'Servicios de depilación con cera y técnicas modernas para una piel suave.',
-      image: 'https://images.unsplash.com/photo-1583001931096-959e9a1a6223?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      title: 'Faciales (Caballeros y Damas)',
+      description: 'Tratamiento anti-edad con productos naturales y orgánicos.',
+      image: 'https://images.unsplash.com/photo-1522337094846-8a818192de1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $45',
+      duration: '75 min',
+      category: 'facial'
+    },
+    {
+      title: 'Faciales (Caballeros y Damas)',
+      description: 'Hidratación intensiva con mascarillas personalizadas.',
+      image: 'https://images.unsplash.com/photo-1626503783175-d99d4ad6c5b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $45',
+      duration: '75 min',
+      category: 'facial'
+    },
+
+    // Cejas Permanentes
+    {
+      title: 'Cejas Permanentes con Henna',
+      description: 'Diseño y tinte de cejas con henna natural de larga duración.',
+      image: 'https://images.unsplash.com/photo-1514511819738-9bf5ba7abaa6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $30',
+      duration: '45 min',
+      category: 'cejas'
+    },
+    {
+      title: 'Cejas Permanentes con Henna',
+      description: 'Microblading y técnicas de perfilado profesional.',
+      image: 'https://images.unsplash.com/photo-1494790108755-2616c9d8e0ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $30',
+      duration: '45 min',
+      category: 'cejas'
+    },
+    {
+      title: 'Cejas Permanentes con Henna',
+      description: 'Arquitectura de cejas según la forma de tu rostro.',
+      image: 'https://images.unsplash.com/photo-1532170579297-281918c8ae72?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $30',
+      duration: '45 min',
+      category: 'cejas'
+    },
+
+    // Depilaciones
+    {
+      title: 'Depilaciones con Crema',
+      description: 'Depilación suave con cremas especializadas para piel sensible.',
+      image: 'https://images.unsplash.com/photo-1552693673-1bf958298935?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $20',
       duration: '30 min',
       category: 'depilacion'
     },
     {
-      title: 'Extensiones de Pestañas',
-      description: 'Extensiones de pestañas profesionales para una mirada más intensa.',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-      price: 'Desde $70',
-      duration: '120 min',
-      category: 'pestanas'
+      title: 'Depilaciones con Crema',
+      description: 'Depilación corporal completa con productos hipoalergénicos.',
+      image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $20',
+      duration: '30 min',
+      category: 'depilacion'
+    },
+    {
+      title: 'Depilaciones con Crema',
+      description: 'Técnicas avanzadas de depilación para resultados duraderos.',
+      image: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $20',
+      duration: '30 min',
+      category: 'depilacion'
+    },
+
+    // Maquillaje
+    {
+      title: 'Maquillaje',
+      description: 'Maquillaje profesional para eventos, bodas y ocasiones especiales.',
+      image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $40',
+      duration: '60 min',
+      category: 'maquillaje'
+    },
+    {
+      title: 'Maquillaje',
+      description: 'Maquillaje de día y noche con técnicas profesionales.',
+      image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $40',
+      duration: '60 min',
+      category: 'maquillaje'
+    },
+    {
+      title: 'Maquillaje',
+      description: 'Sesiones de maquillaje para fotografía y video.',
+      image: 'https://images.unsplash.com/photo-1516914943479-89db7d9ae7f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      price: 'Desde $40',
+      duration: '60 min',
+      category: 'maquillaje'
     }
   ];
 
   const categories = [
     { id: 'todos', name: 'Todos' },
     { id: 'cabello', name: 'Cabello' },
-    { id: 'maquillaje', name: 'Maquillaje' },
     { id: 'unas', name: 'Uñas' },
     { id: 'facial', name: 'Facial' },
+    { id: 'corporal', name: 'Corporal' },
+    { id: 'pestanas', name: 'Pestañas' },
+    { id: 'cejas', name: 'Cejas' },
     { id: 'depilacion', name: 'Depilación' },
-    { id: 'pestanas', name: 'Pestañas' }
+    { id: 'maquillaje', name: 'Maquillaje' },
+    { id: 'relajacion', name: 'Relajación' }
   ];
 
   const filteredServices = selectedCategory === 'todos' 
