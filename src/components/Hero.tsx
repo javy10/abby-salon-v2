@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useRef, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -6,6 +7,34 @@ import { useLanguage } from '@/contexts/LanguageContext';
 const Hero: React.FC = () => {
   const { elementRef, isInView } = useIntersectionObserver();
   const { t } = useLanguage();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleLoadedData = () => {
+      setVideoLoaded(true);
+    };
+
+    const handleError = () => {
+      console.error('Error loading video');
+    };
+
+    video.addEventListener('loadeddata', handleLoadedData);
+    video.addEventListener('error', handleError);
+
+    // Optimización: Solo cargar el video cuando el componente está visible
+    if (isInView && !videoLoaded) {
+      video.load();
+    }
+
+    return () => {
+      video.removeEventListener('loadeddata', handleLoadedData);
+      video.removeEventListener('error', handleError);
+    };
+  }, [isInView, videoLoaded]);
 
   const scrollToContact = () => {
     const element = document.querySelector('#contacto');
@@ -25,18 +54,33 @@ const Hero: React.FC = () => {
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full z-0">
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
-          preload="auto"
-          className="w-full h-full object-cover"
+          preload="none"
+          className={`w-full h-full object-cover transition-opacity duration-1000 ${
+            videoLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          poster="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
         >
           <source 
             src="https://videos.pexels.com/video-files/3997198/3997198-uhd_2732_1440_25fps.mp4" 
             type="video/mp4" 
           />
         </video>
+        
+        {/* Fallback background image while video loads */}
+        {!videoLoaded && (
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"
+            }}
+          />
+        )}
+        
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
@@ -87,6 +131,7 @@ const Hero: React.FC = () => {
                   src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                   alt="Salón de Belleza"
                   className="w-full h-auto rounded-2xl shadow-2xl object-cover"
+                  loading="lazy"
                 />
               </div>
             </div>

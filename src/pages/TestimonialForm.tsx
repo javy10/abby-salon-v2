@@ -98,7 +98,7 @@ const TestimonialForm: React.FC = () => {
 
   const testimonialSchema = z.object({
     nombre: z.string().min(2, t.validation.nameMin),
-    opinion: z.string().min(10, t.validation.opinionMin).max(250, t.validation.opinionMax),
+    opinion: z.string().min(10, t.validation.opinionMin).max(500, t.validation.opinionMax),
     calificacion: z.number().min(1, t.validation.ratingMin).max(5, t.validation.ratingMax)
   });
 
@@ -286,13 +286,13 @@ const TestimonialForm: React.FC = () => {
                           {...field}
                           placeholder={t.opinionPlaceholder}
                           className="border-2 border-transparent bg-white/10 text-white placeholder:text-gray-400 focus:border-pink-400 transition-all duration-300 min-h-[120px] resize-none hover:bg-white/20"
-                          maxLength={250}
+                          maxLength={500}
                         />
                       </FormControl>
                       <div className="flex justify-between items-center">
                         <FormMessage />
                         <span className="text-xs text-gray-400">
-                          {field.value?.length || 0}/250 {t.characters}
+                          {field.value?.length || 0}/500 {t.characters}
                         </span>
                       </div>
                     </FormItem>
