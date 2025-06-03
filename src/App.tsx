@@ -11,7 +11,7 @@ function App() {
       <div className="min-h-screen bg-background">
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/testimonial-form" element={<TestimonialForm />} />
+          <Route path="/opiniones" element={<TestimonialForm />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Toaster />

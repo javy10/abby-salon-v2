@@ -14,7 +14,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $80',
       duration: '180 min',
-      category: 'cabello'
+      category: 'alisados'
     },
     {
       title: 'Alisados',
@@ -22,7 +22,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $80',
       duration: '180 min',
-      category: 'cabello'
+      category: 'alisados'
     },
     {
       title: 'Alisados',
@@ -30,7 +30,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $80',
       duration: '180 min',
-      category: 'cabello'
+      category: 'alisados'
     },
 
     // Planchados
@@ -40,7 +40,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $25',
       duration: '45 min',
-      category: 'cabello'
+      category: 'planchados'
     },
     {
       title: 'Planchados',
@@ -48,7 +48,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1594736797933-d0beb67c3e71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $25',
       duration: '45 min',
-      category: 'cabello'
+      category: 'planchados'
     },
     {
       title: 'Planchados',
@@ -56,7 +56,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $25',
       duration: '45 min',
-      category: 'cabello'
+      category: 'planchados'
     },
 
     // Cortes para Dama
@@ -66,7 +66,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $35',
       duration: '60 min',
-      category: 'cabello'
+      category: 'cortes'
     },
     {
       title: 'Cortes para Dama',
@@ -74,7 +74,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1457131760772-7017c6180f05?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $35',
       duration: '60 min',
-      category: 'cabello'
+      category: 'cortes'
     },
     {
       title: 'Cortes para Dama',
@@ -82,7 +82,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $35',
       duration: '60 min',
-      category: 'cabello'
+      category: 'cortes'
     },
 
     // Baños de Color
@@ -92,7 +92,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $60',
       duration: '120 min',
-      category: 'cabello'
+      category: 'color'
     },
     {
       title: 'Baños de Color de Cabello',
@@ -100,7 +100,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1567013127542-490d757e51cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $60',
       duration: '120 min',
-      category: 'cabello'
+      category: 'color'
     },
     {
       title: 'Baños de Color de Cabello',
@@ -108,7 +108,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $60',
       duration: '120 min',
-      category: 'cabello'
+      category: 'color'
     },
 
     // Uñas Acrílicas
@@ -118,7 +118,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $40',
       duration: '90 min',
-      category: 'unas'
+      category: 'acrilicas'
     },
     {
       title: 'Uñas Acrílicas',
@@ -126,7 +126,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $40',
       duration: '90 min',
-      category: 'unas'
+      category: 'acrilicas'
     },
     {
       title: 'Uñas Acrílicas',
@@ -134,7 +134,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1632345031435-8727f6897d53?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $40',
       duration: '90 min',
-      category: 'unas'
+      category: 'acrilicas'
     },
 
     // Esmaltados Permanentes
@@ -144,7 +144,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1607779097040-26e80aa78e66?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $25',
       duration: '60 min',
-      category: 'unas'
+      category: 'esmaltados'
     },
     {
       title: 'Esmaltados Permanentes',
@@ -152,7 +152,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1599948128020-9d3d2e116df5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $25',
       duration: '60 min',
-      category: 'unas'
+      category: 'esmaltados'
     },
     {
       title: 'Esmaltados Permanentes',
@@ -160,7 +160,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1617620165588-36c73ce89adb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $25',
       duration: '60 min',
-      category: 'unas'
+      category: 'esmaltados'
     },
 
     // Pedicure y Manicura
@@ -170,15 +170,15 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1588990715767-52d0e5c657b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $30',
       duration: '75 min',
-      category: 'unas'
+      category: 'pedicure'
     },
     {
       title: 'Pedicure y Manicura',
-      description: 'Spa de manos y pies con exfoliación y hidratación profunda.',
+      description: 'Spa de manos y pies con exfoliación e hidratación profunda.',
       image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $30',
       duration: '75 min',
-      category: 'unas'
+      category: 'pedicure'
     },
     {
       title: 'Pedicure y Manicura',
@@ -186,7 +186,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $30',
       duration: '75 min',
-      category: 'unas'
+      category: 'pedicure'
     },
 
     // Baños de Luna
@@ -196,7 +196,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $70',
       duration: '90 min',
-      category: 'relajacion'
+      category: 'luna'
     },
     {
       title: 'Baños de Luna',
@@ -204,7 +204,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $70',
       duration: '90 min',
-      category: 'relajacion'
+      category: 'luna'
     },
     {
       title: 'Baños de Luna',
@@ -212,7 +212,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $70',
       duration: '90 min',
-      category: 'relajacion'
+      category: 'luna'
     },
 
     // Extensiones de Pestañas
@@ -248,7 +248,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1583001931096-959e9a1a6223?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $55',
       duration: '60 min',
-      category: 'corporal'
+      category: 'exfoliaciones'
     },
     {
       title: 'Exfoliaciones en Todo el Cuerpo',
@@ -256,7 +256,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $55',
       duration: '60 min',
-      category: 'corporal'
+      category: 'exfoliaciones'
     },
     {
       title: 'Exfoliaciones en Todo el Cuerpo',
@@ -264,7 +264,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1592053420092-eb861d8a6f97?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $55',
       duration: '60 min',
-      category: 'corporal'
+      category: 'exfoliaciones'
     },
 
     // Faciales
@@ -274,7 +274,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $45',
       duration: '75 min',
-      category: 'facial'
+      category: 'faciales'
     },
     {
       title: 'Faciales (Caballeros y Damas)',
@@ -282,7 +282,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1522337094846-8a818192de1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $45',
       duration: '75 min',
-      category: 'facial'
+      category: 'faciales'
     },
     {
       title: 'Faciales (Caballeros y Damas)',
@@ -290,7 +290,7 @@ const Services: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1626503783175-d99d4ad6c5b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
       price: 'Desde $45',
       duration: '75 min',
-      category: 'facial'
+      category: 'faciales'
     },
 
     // Cejas Permanentes
@@ -374,15 +374,20 @@ const Services: React.FC = () => {
 
   const categories = [
     { id: 'todos', name: 'Todos' },
-    { id: 'cabello', name: 'Cabello' },
-    { id: 'unas', name: 'Uñas' },
-    { id: 'facial', name: 'Facial' },
-    { id: 'corporal', name: 'Corporal' },
-    { id: 'pestanas', name: 'Pestañas' },
-    { id: 'cejas', name: 'Cejas' },
-    { id: 'depilacion', name: 'Depilación' },
-    { id: 'maquillaje', name: 'Maquillaje' },
-    { id: 'relajacion', name: 'Relajación' }
+    { id: 'alisados', name: 'Alisados' },
+    { id: 'planchados', name: 'Planchados' },
+    { id: 'cortes', name: 'Cortes para Dama' },
+    { id: 'color', name: 'Baños de Color' },
+    { id: 'acrilicas', name: 'Uñas Acrílicas' },
+    { id: 'esmaltados', name: 'Esmaltados Permanentes' },
+    { id: 'pedicure', name: 'Pedicure y Manicura' },
+    { id: 'luna', name: 'Baños de Luna' },
+    { id: 'pestanas', name: 'Extensiones de Pestañas' },
+    { id: 'exfoliaciones', name: 'Exfoliaciones' },
+    { id: 'faciales', name: 'Faciales' },
+    { id: 'cejas', name: 'Cejas Permanentes' },
+    { id: 'depilacion', name: 'Depilaciones' },
+    { id: 'maquillaje', name: 'Maquillaje' }
   ];
 
   const filteredServices = selectedCategory === 'todos' 

@@ -212,32 +212,40 @@ const TestimonialForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100 dark:from-gray-900 dark:via-purple-900 dark:to-pink-900 flex items-center justify-center p-4 transition-all duration-500">
-      {/* Controls Bar */}
-      <div className="fixed top-4 right-4 flex items-center space-x-4 z-50">
-        {/* Language Toggle */}
-        <div className="flex items-center space-x-2 bg-white/20 dark:bg-black/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30">
-          <Globe className="h-4 w-4" />
-          <span className="text-sm font-medium">{language.toUpperCase()}</span>
-          <Switch checked={language === 'en'} onCheckedChange={toggleLanguage} />
-        </div>
-        
-        {/* Theme Toggle */}
-        <div className="flex items-center space-x-2 bg-white/20 dark:bg-black/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30">
-          {isDarkMode ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-          <Switch checked={isDarkMode} onCheckedChange={toggleDarkMode} />
-        </div>
-      </div>
-
+    <div className="min-h-screen bg-pink-50 dark:bg-gray-900 flex items-center justify-center p-4 transition-all duration-500">
       <div className={`w-full max-w-md transform transition-all duration-1000 ${
         isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'
       }`}>
-        <Card className="border-0 bg-gradient-to-br from-white/80 to-white/60 dark:from-gray-800/80 dark:to-gray-900/60 shadow-2xl backdrop-blur-lg animate-fade-in">
+        <Card className="border-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black shadow-2xl backdrop-blur-lg animate-fade-in">
           <CardHeader className="text-center pb-6 animate-slide-in-from-top">
-            <CardTitle className="text-3xl font-playfair font-bold mb-2 animate-fade-in">
-              {t.title} <span className="gradient-text">{t.titleHighlight}</span>
+            {/* Controls Bar inside form */}
+            <div className="flex items-center justify-end space-x-4 mb-4">
+              {/* Language Toggle */}
+              <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1 border border-white/20">
+                <Globe className="h-3 w-3 text-white" />
+                <span className="text-xs font-medium text-white">{language.toUpperCase()}</span>
+                <Switch 
+                  checked={language === 'en'} 
+                  onCheckedChange={toggleLanguage}
+                  className="scale-75"
+                />
+              </div>
+              
+              {/* Theme Toggle */}
+              <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1 border border-white/20">
+                {isDarkMode ? <Moon className="h-3 w-3 text-white" /> : <Sun className="h-3 w-3 text-white" />}
+                <Switch 
+                  checked={isDarkMode} 
+                  onCheckedChange={toggleDarkMode}
+                  className="scale-75"
+                />
+              </div>
+            </div>
+
+            <CardTitle className="text-3xl font-playfair font-bold mb-2 animate-fade-in text-white">
+              {t.title} <span className="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">{t.titleHighlight}</span>
             </CardTitle>
-            <p className="text-muted-foreground animate-fade-in animation-delay-200">
+            <p className="text-gray-300 animate-fade-in animation-delay-200">
               {t.subtitle}
             </p>
           </CardHeader>
@@ -250,14 +258,14 @@ const TestimonialForm: React.FC = () => {
                   name="nombre"
                   render={({ field }) => (
                     <FormItem className="animate-slide-in-from-left animation-delay-300">
-                      <FormLabel className="text-foreground font-medium">
+                      <FormLabel className="text-gray-200 font-medium">
                         {t.nameLabel}
                       </FormLabel>
                       <FormControl>
                         <Input
                           {...field}
                           placeholder={t.namePlaceholder}
-                          className="border-2 border-transparent bg-white/50 dark:bg-gray-800/50 focus:border-pink-400 transition-all duration-300 hover:bg-white/70 dark:hover:bg-gray-700/70"
+                          className="border-2 border-transparent bg-white/10 text-white placeholder:text-gray-400 focus:border-pink-400 transition-all duration-300 hover:bg-white/20"
                         />
                       </FormControl>
                       <FormMessage />
@@ -270,20 +278,20 @@ const TestimonialForm: React.FC = () => {
                   name="opinion"
                   render={({ field }) => (
                     <FormItem className="animate-slide-in-from-right animation-delay-400">
-                      <FormLabel className="text-foreground font-medium">
+                      <FormLabel className="text-gray-200 font-medium">
                         {t.opinionLabel}
                       </FormLabel>
                       <FormControl>
                         <Textarea
                           {...field}
                           placeholder={t.opinionPlaceholder}
-                          className="border-2 border-transparent bg-white/50 dark:bg-gray-800/50 focus:border-pink-400 transition-all duration-300 min-h-[120px] resize-none hover:bg-white/70 dark:hover:bg-gray-700/70"
+                          className="border-2 border-transparent bg-white/10 text-white placeholder:text-gray-400 focus:border-pink-400 transition-all duration-300 min-h-[120px] resize-none hover:bg-white/20"
                           maxLength={250}
                         />
                       </FormControl>
                       <div className="flex justify-between items-center">
                         <FormMessage />
-                        <span className="text-xs text-muted-foreground">
+                        <span className="text-xs text-gray-400">
                           {field.value?.length || 0}/250 {t.characters}
                         </span>
                       </div>
@@ -296,7 +304,7 @@ const TestimonialForm: React.FC = () => {
                   name="calificacion"
                   render={() => (
                     <FormItem className="animate-scale-in animation-delay-500">
-                      <FormLabel className="text-foreground font-medium">
+                      <FormLabel className="text-gray-200 font-medium">
                         {t.ratingLabel}
                       </FormLabel>
                       <FormControl>
@@ -306,7 +314,7 @@ const TestimonialForm: React.FC = () => {
                       </FormControl>
                       <div className="text-center">
                         {selectedRating > 0 && (
-                          <span className="text-sm text-muted-foreground animate-fade-in">
+                          <span className="text-sm text-gray-400 animate-fade-in">
                             {t.ratings[selectedRating as keyof typeof t.ratings]}
                           </span>
                         )}
@@ -320,7 +328,7 @@ const TestimonialForm: React.FC = () => {
                   <Button
                     type="button"
                     variant="outline"
-                    className="flex-1 border-2 border-orange-300 text-orange-600 hover:bg-orange-50 dark:border-orange-500 dark:text-orange-400 dark:hover:bg-orange-950 transition-all duration-300 hover:scale-105"
+                    className="flex-1 border-2 border-orange-400 text-orange-400 bg-transparent hover:bg-orange-400/20 transition-all duration-300 hover:scale-105"
                     onClick={() => {
                       form.reset();
                       setSelectedRating(0);
