@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
@@ -34,7 +33,7 @@ const Hero: React.FC = () => {
           className="w-full h-full object-cover"
         >
           <source 
-            src="https://videos.pexels.com/video-files/3196284/3196284-hd_1920_1080_30fps.mp4" 
+            src="https://videos.pexels.com/video-files/3997198/3997198-uhd_2732_1440_25fps.mp4" 
             type="video/mp4" 
           />
         </video>
