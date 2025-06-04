@@ -21,7 +21,7 @@ const About: React.FC = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-600 rounded-3xl blur-2xl opacity-30 transform -rotate-6"></div>
               <img
-                src="https://images.unsplash.com/photo-1594736797933-d0dcaa4703c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
                 alt="Estilista profesional"
                 className="relative w-full max-w-md mx-auto rounded-3xl shadow-2xl object-cover"
               />

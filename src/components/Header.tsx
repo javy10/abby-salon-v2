@@ -33,7 +33,6 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
       { name: t('nav.contact'), href: '#contacto' },
     ];
 
-    // Solo agregar testimonios si existen
     if (hasTestimonials) {
       items.splice(3, 0, { name: t('nav.testimonials'), href: '#testimonios' });
     }
@@ -51,7 +50,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-lg' : 'bg-transparent'
+      isScrolled ? 'bg-black/90 backdrop-blur-md border-b border-white/10 shadow-lg' : 'bg-black/50 backdrop-blur-sm'
     }`}>
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
@@ -60,7 +59,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
             <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
               <span className="text-white font-bold text-lg">A</span>
             </div>
-            <span className="text-xl font-playfair font-bold gradient-text">
+            <span className="text-xl font-playfair font-bold text-white">
               Abby's Salon
             </span>
           </div>
@@ -71,10 +70,10 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-foreground hover:text-primary transition-colors duration-200 font-medium relative group"
+                className="text-white hover:text-orange-400 transition-colors duration-200 font-medium relative group"
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
           </nav>
@@ -87,12 +86,12 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
               variant="ghost"
               size="icon"
               onClick={toggleDarkMode}
-              className="hover:bg-primary/10"
+              className="hover:bg-white/10 text-white"
             >
               {isDarkMode ? (
-                <Sun className="h-5 w-5 text-primary" />
+                <Sun className="h-5 w-5 text-orange-400" />
               ) : (
-                <Moon className="h-5 w-5 text-primary" />
+                <Moon className="h-5 w-5 text-orange-400" />
               )}
             </Button>
 
@@ -102,12 +101,12 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsOpen(!isOpen)}
-                className="hover:bg-primary/10"
+                className="hover:bg-white/10 text-white"
               >
                 {isOpen ? (
-                  <X className="h-6 w-6 text-primary" />
+                  <X className="h-6 w-6 text-orange-400" />
                 ) : (
-                  <Menu className="h-6 w-6 text-primary" />
+                  <Menu className="h-6 w-6 text-orange-400" />
                 )}
               </Button>
             </div>
@@ -116,13 +115,13 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-md border-b border-border shadow-lg animate-fade-in">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-md border-b border-white/10 shadow-lg animate-fade-in">
             <nav className="container mx-auto px-4 py-4">
               {getMenuItems().map((item, index) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left py-3 text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 font-medium border-b border-border/30 last:border-b-0 rounded-md px-2"
+                  className="block w-full text-left py-3 text-white hover:text-orange-400 hover:bg-white/5 transition-all duration-200 font-medium border-b border-white/10 last:border-b-0 rounded-md px-2"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {item.name}

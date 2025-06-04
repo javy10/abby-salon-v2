@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
@@ -83,7 +82,6 @@ const Hero: React.FC = () => {
           />
         </video>
         
-        {/* Fallback background image while video loads */}
         {!videoLoaded && (
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -93,7 +91,6 @@ const Hero: React.FC = () => {
           />
         )}
         
-        {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
@@ -103,7 +100,6 @@ const Hero: React.FC = () => {
       
       <div className="container mx-auto px-4 pt-20 relative z-20">
         <div className="flex items-center justify-center">
-          {/* Content - Centrado sin imagen */}
           <div className="text-center space-y-8 max-w-4xl">
             <h1 className="text-5xl lg:text-7xl font-playfair font-bold leading-tight">
               <span className="block text-white mb-2 drop-shadow-lg">{t('hero.title1')}</span>
@@ -127,7 +123,7 @@ const Hero: React.FC = () => {
                 size="lg" 
                 variant="outline"
                 onClick={() => document.querySelector('#servicios')?.scrollIntoView({ behavior: 'smooth' })}
-                className="border-2 border-white/80 text-white hover:bg-white/10 hover:text-white hover:border-white px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300 backdrop-blur-sm"
+                className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-black px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300 backdrop-blur-sm transform hover:scale-105"
               >
                 {t('hero.services')}
               </Button>

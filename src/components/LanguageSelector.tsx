@@ -25,21 +25,28 @@ const LanguageSelector: React.FC = () => {
 
   return (
     <Select value={language} onValueChange={setLanguage}>
-      <SelectTrigger className="w-[150px] border-0 bg-transparent hover:bg-primary/10">
+      <SelectTrigger className="w-[120px] border-0 bg-transparent hover:bg-white/10 text-white">
         <div className="flex items-center space-x-2">
-          <Globe className="h-4 w-4 text-primary" />
-          <div className="flex items-center space-x-1">
-            <span className="text-lg">{currentLanguage?.flag}</span>
-            <span className="text-sm font-medium">{currentLanguage?.code.toUpperCase()}</span>
-          </div>
+          <span className="text-base" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+            {currentLanguage?.flag}
+          </span>
+          <span className="text-sm font-medium text-white">
+            {currentLanguage?.code.toUpperCase()}
+          </span>
         </div>
       </SelectTrigger>
-      <SelectContent className="bg-background border border-border shadow-lg z-50 min-w-[180px]">
+      <SelectContent className="bg-black/95 border border-white/20 shadow-lg z-50 min-w-[180px] backdrop-blur-md">
         {languages.map((lang) => (
-          <SelectItem key={lang.code} value={lang.code} className="cursor-pointer">
+          <SelectItem 
+            key={lang.code} 
+            value={lang.code} 
+            className="cursor-pointer text-white hover:bg-white/10 focus:bg-white/10"
+          >
             <div className="flex items-center space-x-3">
-              <span className="text-lg">{lang.flag}</span>
-              <span className="font-medium">{lang.name}</span>
+              <span className="text-base" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+                {lang.flag}
+              </span>
+              <span className="font-medium text-white">{lang.name}</span>
             </div>
           </SelectItem>
         ))}

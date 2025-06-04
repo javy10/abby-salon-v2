@@ -87,7 +87,6 @@ const TestimonialForm: React.FC = () => {
       if (response.ok) {
         setIsExiting(true);
         
-        // Esperar a que termine la animación de salida antes de mostrar el éxito
         setTimeout(async () => {
           await Swal.fire({
             icon: 'success',
@@ -101,7 +100,7 @@ const TestimonialForm: React.FC = () => {
           form.reset();
           setSelectedRating(0);
           setIsExiting(false);
-        }, 600);
+        }, 800);
       } else {
         throw new Error('Error al guardar');
       }
@@ -131,14 +130,14 @@ const TestimonialForm: React.FC = () => {
       form.reset();
       setSelectedRating(0);
       setIsExiting(false);
-    }, 500);
+    }, 800);
   };
 
   return (
     <div className="min-h-screen bg-pink-50 dark:bg-gray-900 flex items-center justify-center p-4 transition-all duration-500">
       <div className={`w-full max-w-md transform transition-all duration-1000 ${
-        isVisible && !isExiting ? 'translate-y-0 opacity-100 scale-100' : 
-        isExiting ? 'animate-zoom-out' : 'translate-y-10 opacity-0 scale-95'
+        isVisible && !isExiting ? 'translate-y-0 opacity-100 scale-100 rotate-0' : 
+        isExiting ? 'animate-modern-exit' : 'translate-y-10 opacity-0 scale-95'
       }`}>
         <Card className="border-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black shadow-2xl backdrop-blur-lg animate-fade-in">
           <FormHeader
@@ -153,14 +152,18 @@ const TestimonialForm: React.FC = () => {
             }}
           />
           
-          <CardContent className="space-y-6 animate-slide-in-from-bottom">
+          <CardContent className={`space-y-6 transition-all duration-700 ${
+            isExiting ? 'animate-content-exit' : 'animate-slide-in-from-bottom'
+          }`}>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
                   control={form.control}
                   name="nombre"
                   render={({ field }) => (
-                    <FormItem className="animate-slide-in-from-left animation-delay-300">
+                    <FormItem className={`transition-all duration-500 ${
+                      isExiting ? 'animate-field-exit' : 'animate-slide-in-from-left animation-delay-300'
+                    }`}>
                       <FormLabel className="text-gray-200 font-medium">
                         {t.nameLabel}
                       </FormLabel>
@@ -180,7 +183,9 @@ const TestimonialForm: React.FC = () => {
                   control={form.control}
                   name="opinion"
                   render={({ field }) => (
-                    <FormItem className="animate-slide-in-from-right animation-delay-400">
+                    <FormItem className={`transition-all duration-600 ${
+                      isExiting ? 'animate-field-exit' : 'animate-slide-in-from-right animation-delay-400'
+                    }`}>
                       <FormLabel className="text-gray-200 font-medium">
                         {t.opinionLabel}
                       </FormLabel>
@@ -208,7 +213,9 @@ const TestimonialForm: React.FC = () => {
                   control={form.control}
                   name="calificacion"
                   render={() => (
-                    <FormItem>
+                    <FormItem className={`transition-all duration-700 ${
+                      isExiting ? 'animate-field-exit' : ''
+                    }`}>
                       <FormLabel className="text-gray-200 font-medium">
                         {t.ratingLabel}
                       </FormLabel>
@@ -224,7 +231,9 @@ const TestimonialForm: React.FC = () => {
                   )}
                 />
 
-                <div className="flex space-x-3 pt-4 animate-slide-in-from-bottom animation-delay-600">
+                <div className={`flex space-x-3 pt-4 transition-all duration-800 ${
+                  isExiting ? 'animate-buttons-exit' : 'animate-slide-in-from-bottom animation-delay-600'
+                }`}>
                   <Button
                     type="button"
                     variant="outline"
