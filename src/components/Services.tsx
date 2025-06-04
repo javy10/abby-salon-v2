@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -392,9 +391,9 @@ const Services: React.FC = () => {
   const filteredServices = services.filter(service => service.category === selectedCategory);
 
   return (
-    <section id="servicios" className="py-24 bg-background">
+    <section id="servicios" className="py-20 bg-background min-h-screen flex items-center">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-20 animate-fade-in">
+        <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-playfair font-bold mb-6">
             Galería de <span className="gradient-text">Servicios</span>
           </h2>
@@ -404,7 +403,7 @@ const Services: React.FC = () => {
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
           {categories.map((category) => (
             <Button
               key={category.id}
@@ -470,7 +469,7 @@ const Services: React.FC = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-20">
+        <div className="text-center mt-16">
           <Button 
             onClick={() => document.querySelector('#contacto')?.scrollIntoView({ behavior: 'smooth' })}
             className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white px-8 py-4 text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"

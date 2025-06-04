@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Instagram, Facebook } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
@@ -32,9 +33,13 @@ const Contact: React.FC = () => {
     'Maquillaje'
   ];
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleServiceChange = (value: string) => {
+    setFormData(prev => ({ ...prev, service: value }));
   };
 
   const handleWhatsAppMessage = () => {
@@ -103,21 +108,22 @@ const Contact: React.FC = () => {
                   className="bg-white/20 border-white/30 text-foreground placeholder:text-muted-foreground"
                 />
                 
-                <select
-                  name="service"
-                  value={formData.service}
-                  onChange={handleInputChange}
-                  className="w-full p-3 bg-white/20 border border-white/30 rounded-md text-foreground focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-800 dark:border-gray-600 dark:text-white"
-                >
-                  <option value="" className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
-                    Selecciona un servicio
-                  </option>
-                  {services.map((service) => (
-                    <option key={service} value={service} className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
-                      {service}
-                    </option>
-                  ))}
-                </select>
+                <Select onValueChange={handleServiceChange}>
+                  <SelectTrigger className="bg-white/20 border-white/30 text-foreground">
+                    <SelectValue placeholder="Selecciona un servicio" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 z-50">
+                    {services.map((service) => (
+                      <SelectItem 
+                        key={service} 
+                        value={service}
+                        className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        {service}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
                 
                 <Button
                   onClick={handleWhatsAppMessage}

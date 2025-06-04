@@ -248,10 +248,6 @@
   animation: float 3s ease-in-out infinite;
 }
 
-.scroll-smooth {
-  scroll-behavior: smooth;
-}
-
 /* Hidden by default for animations */
 .animate-on-scroll {
   opacity: 0;
