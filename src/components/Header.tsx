@@ -116,13 +116,13 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border shadow-lg animate-fade-in">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-md border-b border-border shadow-lg animate-fade-in">
             <nav className="container mx-auto px-4 py-4">
               {getMenuItems().map((item, index) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left py-3 text-foreground hover:text-primary transition-colors duration-200 font-medium border-b border-border/50 last:border-b-0"
+                  className="block w-full text-left py-3 text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 font-medium border-b border-border/30 last:border-b-0 rounded-md px-2"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {item.name}

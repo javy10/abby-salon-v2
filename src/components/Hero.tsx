@@ -127,7 +127,7 @@ const Hero: React.FC = () => {
                 size="lg" 
                 variant="outline"
                 onClick={() => document.querySelector('#servicios')?.scrollIntoView({ behavior: 'smooth' })}
-                className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300 backdrop-blur-sm"
+                className="border-2 border-white/80 text-white hover:bg-white/10 hover:text-white hover:border-white px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300 backdrop-blur-sm"
               >
                 {t('hero.services')}
               </Button>
