@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Instagram, Facebook } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
@@ -12,18 +11,34 @@ const Contact: React.FC = () => {
     name: '',
     email: '',
     phone: '',
-    service: '',
-    message: ''
+    service: ''
   });
   const { elementRef, isInView } = useIntersectionObserver();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const services = [
+    'Alisados',
+    'Planchados', 
+    'Cortes para Dama',
+    'Baños de Color',
+    'Uñas Acrílicas',
+    'Esmaltados Permanentes',
+    'Pedicure y Manicura',
+    'Baños de Luna',
+    'Extensiones de Pestañas',
+    'Exfoliaciones',
+    'Faciales',
+    'Cejas Permanentes',
+    'Depilaciones',
+    'Maquillaje'
+  ];
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleWhatsAppMessage = () => {
-    const message = `Hola! Soy ${formData.name || '[Nombre]'}. Me gustaría agendar una cita para ${formData.service || '[Servicio]'}. ${formData.message ? `Mensaje adicional: ${formData.message}` : ''}`;
+    const message = `Hola! Soy ${formData.name || '[Nombre]'}. Me gustaría agendar una cita para ${formData.service || '[Servicio]'}.`;
     const phoneNumber = '50378335406';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
@@ -92,25 +107,17 @@ const Contact: React.FC = () => {
                   name="service"
                   value={formData.service}
                   onChange={handleInputChange}
-                  className="w-full p-3 bg-white/20 border border-white/30 rounded-md text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full p-3 bg-white/20 border border-white/30 rounded-md text-foreground focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-800 dark:border-gray-600 dark:text-white"
                 >
-                  <option value="">Selecciona un servicio</option>
-                  <option value="Corte y Peinado">Corte y Peinado</option>
-                  <option value="Coloración">Coloración</option>
-                  <option value="Tratamientos Capilares">Tratamientos Capilares</option>
-                  <option value="Maquillaje Profesional">Maquillaje Profesional</option>
-                  <option value="Manicure y Pedicure">Manicure y Pedicure</option>
-                  <option value="Facial y Limpieza">Facial y Limpieza</option>
+                  <option value="" className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+                    Selecciona un servicio
+                  </option>
+                  {services.map((service) => (
+                    <option key={service} value={service} className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+                      {service}
+                    </option>
+                  ))}
                 </select>
-                
-                <Textarea
-                  name="message"
-                  placeholder="Mensaje adicional (opcional)"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  className="bg-white/20 border-white/30 text-foreground placeholder:text-muted-foreground"
-                  rows={4}
-                />
                 
                 <Button
                   onClick={handleWhatsAppMessage}

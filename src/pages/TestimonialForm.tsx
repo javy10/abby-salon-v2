@@ -19,6 +19,7 @@ const TestimonialForm: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [language, setLanguage] = useState<'es' | 'en'>('es');
   const [isVisible, setIsVisible] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
 
   const t = translations[language];
 
@@ -84,17 +85,23 @@ const TestimonialForm: React.FC = () => {
       });
 
       if (response.ok) {
-        await Swal.fire({
-          icon: 'success',
-          title: t.success.title,
-          text: t.success.text,
-          confirmButtonColor: '#ec4899',
-          background: isDarkMode ? '#1a1a1a' : '#ffffff',
-          color: isDarkMode ? '#ffffff' : '#000000'
-        });
+        setIsExiting(true);
         
-        form.reset();
-        setSelectedRating(0);
+        // Esperar a que termine la animación de salida antes de mostrar el éxito
+        setTimeout(async () => {
+          await Swal.fire({
+            icon: 'success',
+            title: t.success.title,
+            text: t.success.text,
+            confirmButtonColor: '#ec4899',
+            background: isDarkMode ? '#1a1a1a' : '#ffffff',
+            color: isDarkMode ? '#ffffff' : '#000000'
+          });
+          
+          form.reset();
+          setSelectedRating(0);
+          setIsExiting(false);
+        }, 600);
       } else {
         throw new Error('Error al guardar');
       }
@@ -117,10 +124,21 @@ const TestimonialForm: React.FC = () => {
     form.setValue('calificacion', rating);
   };
 
+  const handleCancel = () => {
+    setIsExiting(true);
+    
+    setTimeout(() => {
+      form.reset();
+      setSelectedRating(0);
+      setIsExiting(false);
+    }, 500);
+  };
+
   return (
     <div className="min-h-screen bg-pink-50 dark:bg-gray-900 flex items-center justify-center p-4 transition-all duration-500">
       <div className={`w-full max-w-md transform transition-all duration-1000 ${
-        isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'
+        isVisible && !isExiting ? 'translate-y-0 opacity-100 scale-100' : 
+        isExiting ? 'animate-zoom-out' : 'translate-y-10 opacity-0 scale-95'
       }`}>
         <Card className="border-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black shadow-2xl backdrop-blur-lg animate-fade-in">
           <FormHeader
@@ -170,8 +188,10 @@ const TestimonialForm: React.FC = () => {
                         <Textarea
                           {...field}
                           placeholder={t.opinionPlaceholder}
-                          className="border-2 border-transparent bg-white/10 text-white placeholder:text-gray-400 focus:border-pink-400 transition-all duration-300 min-h-[120px] resize-none hover:bg-white/20"
+                          className="border-2 border-transparent bg-white/10 text-white placeholder:text-gray-400 focus:border-pink-400 transition-all duration-300 resize-none hover:bg-white/20"
                           maxLength={500}
+                          rows={8}
+                          style={{ minHeight: '160px', maxHeight: '160px' }}
                         />
                       </FormControl>
                       <div className="flex justify-between items-center">
@@ -209,10 +229,7 @@ const TestimonialForm: React.FC = () => {
                     type="button"
                     variant="outline"
                     className="flex-1 border-2 border-orange-400 text-orange-400 bg-transparent hover:bg-orange-400/20 transition-all duration-300 hover:scale-105"
-                    onClick={() => {
-                      form.reset();
-                      setSelectedRating(0);
-                    }}
+                    onClick={handleCancel}
                   >
                     {t.cancel}
                   </Button>

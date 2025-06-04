@@ -78,7 +78,7 @@ const Hero: React.FC = () => {
           poster="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
         >
           <source 
-            src="https://videos.pexels.com/video-files/3997198/3997198-uhd_2732_1440_25fps.mp4" 
+            src="https://videos.pexels.com/video-files/3997792/3997792-uhd_2732_1440_25fps.mp4" 
             type="video/mp4" 
           />
         </video>

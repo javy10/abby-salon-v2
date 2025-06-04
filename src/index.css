@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family@Inter:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -76,23 +77,8 @@
     @apply bg-background text-foreground font-inter;
   }
 
-  /* Scroll Snap Implementation */
   html {
     scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
-  }
-
-  /* Scroll snap for all main sections including footer */
-  section, footer {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    min-height: 100vh;
-  }
-
-  /* Special handling for footer - ensure it stays in place when reached */
-  footer {
-    scroll-snap-align: end;
-    min-height: auto;
   }
 }
 
@@ -331,6 +317,40 @@
   }
 }
 
+/* Exit animations inspired by transition.style */
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes slide-out-up {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes zoom-out {
+  from {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.8) rotate(-3deg);
+  }
+}
+
 /* Animation classes */
 .animate-slide-in-from-top {
   animation: slide-in-from-top 0.6s ease-out forwards;
@@ -350,6 +370,18 @@
 
 .animate-scale-in {
   animation: scale-in 0.6s ease-out forwards;
+}
+
+.animate-fade-out {
+  animation: fade-out 0.5s ease-out forwards;
+}
+
+.animate-slide-out-up {
+  animation: slide-out-up 0.5s ease-out forwards;
+}
+
+.animate-zoom-out {
+  animation: zoom-out 0.6s ease-out forwards;
 }
 
 /* Animation delays */
