@@ -13,7 +13,7 @@ const Testimonials: React.FC = () => {
 
   // Auto-scroll carousel
   useEffect(() => {
-    if (!hasTestimonials || loading) return;
+    if (!hasTestimonials || loading || testimonials.length <= 1) return;
     
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
@@ -33,6 +33,12 @@ const Testimonials: React.FC = () => {
   const getVisibleTestimonials = () => {
     if (testimonials.length === 0) return [];
     
+    // Si hay 3 o menos testimonios, mostrar todos sin repetir
+    if (testimonials.length <= 3) {
+      return testimonials.map((testimonial, index) => ({ ...testimonial, originalIndex: index }));
+    }
+    
+    // Si hay más de 3, usar la lógica del carousel
     const visible = [];
     for (let i = 0; i < 3; i++) {
       const index = (currentIndex + i) % testimonials.length;
@@ -45,6 +51,8 @@ const Testimonials: React.FC = () => {
   if (loading || error || !hasTestimonials) {
     return null;
   }
+
+  const visibleTestimonials = getVisibleTestimonials();
 
   return (
     <section 
@@ -66,16 +74,23 @@ const Testimonials: React.FC = () => {
 
         {/* Carousel Container */}
         <div className="relative max-w-7xl mx-auto">
-          <div className="flex transition-transform duration-500 ease-in-out gap-6">
-            {getVisibleTestimonials().map((testimonial, index) => (
+          <div className={`flex transition-transform duration-500 ease-in-out gap-6 ${
+            testimonials.length === 1 ? 'justify-center' : 
+            testimonials.length === 2 ? 'justify-center' : ''
+          }`}>
+            {visibleTestimonials.map((testimonial, index) => (
               <div 
                 key={testimonial.originalIndex}
-                className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3"
-                style={{
+                className={`flex-shrink-0 ${
+                  testimonials.length === 1 ? 'w-full md:w-1/2 lg:w-1/3 mx-auto' :
+                  testimonials.length === 2 ? 'w-full md:w-1/2' :
+                  'w-full md:w-1/2 lg:w-1/3'
+                }`}
+                style={testimonials.length > 3 ? {
                   transform: `translateX(${index === 1 ? '0%' : index === 0 ? '-2%' : '2%'})`,
                   opacity: index === 1 ? 1 : 0.7,
                   scale: index === 1 ? 1 : 0.95
-                }}
+                } : {}}
               >
                 <Card className="border-0 bg-gradient-to-br from-background to-muted/20 shadow-xl h-full">
                   <CardContent className="p-8 text-center h-full flex flex-col justify-between">
@@ -103,20 +118,22 @@ const Testimonials: React.FC = () => {
           </div>
         </div>
 
-        {/* Indicators */}
-        <div className="flex justify-center space-x-2 mt-8">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentIndex 
-                  ? 'bg-primary scale-125' 
-                  : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-              }`}
-            />
-          ))}
-        </div>
+        {/* Indicators - solo mostrar si hay más de 1 testimonio */}
+        {testimonials.length > 1 && (
+          <div className="flex justify-center space-x-2 mt-8">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentIndex 
+                    ? 'bg-primary scale-125' 
+                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
