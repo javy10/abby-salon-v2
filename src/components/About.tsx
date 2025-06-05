@@ -10,7 +10,7 @@ const About: React.FC = () => {
     <section 
       id="sobre-mi" 
       ref={elementRef}
-      className={`py-20 gradient-bg animate-on-scroll min-h-screen flex items-center ${
+      className={`py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-900 dark:via-purple-900 dark:to-gray-800 animate-on-scroll min-h-screen flex items-center ${
         isInView ? 'animate animate-about-entrance' : ''
       }`}
     >
@@ -21,7 +21,7 @@ const About: React.FC = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-600 rounded-3xl blur-2xl opacity-30 transform -rotate-6"></div>
               <img
-                src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
                 alt="Estilista profesional"
                 className="relative w-full max-w-md mx-auto rounded-3xl shadow-2xl object-cover"
               />
@@ -31,13 +31,13 @@ const About: React.FC = () => {
           {/* Content */}
           <div className="space-y-8">
             <div>
-              <h2 className="text-4xl lg:text-5xl font-playfair font-bold mb-6">
+              <h2 className="text-4xl lg:text-5xl font-playfair font-bold mb-6 text-gray-800 dark:text-white">
                 Sobre <span className="gradient-text">Mí</span>
               </h2>
               
-              <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+              <div className="space-y-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                 <p>
-                  Soy <strong className="text-primary">María González</strong>, estilista profesional con más de 10 años de experiencia 
+                  Soy <strong className="text-pink-600 dark:text-pink-400">María González</strong>, estilista profesional con más de 10 años de experiencia 
                   en el mundo de la belleza. Mi pasión por realzar la belleza natural de cada persona 
                   me ha llevado a especializarme en las últimas tendencias y técnicas.
                 </p>
@@ -57,18 +57,18 @@ const About: React.FC = () => {
 
             {/* Certifications */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                <h4 className="font-semibold text-primary mb-2">Certificaciones</h4>
-                <ul className="text-sm text-muted-foreground space-y-1">
+              <div className="bg-white/70 dark:bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-gray-200 dark:border-white/20">
+                <h4 className="font-semibold text-pink-600 dark:text-pink-400 mb-2">Certificaciones</h4>
+                <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
                   <li>• L'Oréal Professional</li>
                   <li>• Redken Certified</li>
                   <li>• Wella Master</li>
                 </ul>
               </div>
               
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                <h4 className="font-semibold text-primary mb-2">Experiencia</h4>
-                <ul className="text-sm text-muted-foreground space-y-1">
+              <div className="bg-white/70 dark:bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-gray-200 dark:border-white/20">
+                <h4 className="font-semibold text-pink-600 dark:text-pink-400 mb-2">Experiencia</h4>
+                <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
                   <li>• +10 años</li>
                   <li>• +2000 clientes</li>
                   <li>• Eventos VIP</li>

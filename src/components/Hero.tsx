@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
@@ -8,32 +9,40 @@ const Hero: React.FC = () => {
   const { t } = useLanguage();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const handleLoadedData = () => {
+    const handleCanPlay = () => {
       setVideoLoaded(true);
+      setVideoError(false);
     };
 
     const handleError = () => {
       console.error('Error loading video');
+      setVideoError(true);
+      setVideoLoaded(false);
     };
 
-    video.addEventListener('loadeddata', handleLoadedData);
-    video.addEventListener('error', handleError);
+    const handleLoadStart = () => {
+      setVideoLoaded(false);
+    };
 
-    // Cargar el video cuando el componente está visible
-    if (isInView && !videoLoaded) {
-      video.load();
-    }
+    video.addEventListener('canplay', handleCanPlay);
+    video.addEventListener('error', handleError);
+    video.addEventListener('loadstart', handleLoadStart);
+
+    // Preload and start loading immediately
+    video.load();
 
     return () => {
-      video.removeEventListener('loadeddata', handleLoadedData);
+      video.removeEventListener('canplay', handleCanPlay);
       video.removeEventListener('error', handleError);
+      video.removeEventListener('loadstart', handleLoadStart);
     };
-  }, [isInView, videoLoaded]);
+  }, []);
 
   // Controlar reproducción basada en visibilidad
   useEffect(() => {
@@ -70,11 +79,14 @@ const Hero: React.FC = () => {
           loop
           muted
           playsInline
-          preload="none"
+          preload="auto"
           className={`w-full h-full object-cover transition-opacity duration-1000 ${
-            videoLoaded ? 'opacity-100' : 'opacity-0'
+            videoLoaded && !videoError ? 'opacity-100' : 'opacity-0'
           }`}
-          poster="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+          style={{ 
+            transform: 'translateZ(0)', // Hardware acceleration
+            willChange: 'transform' // Optimization hint
+          }}
         >
           <source 
             src="https://videos.pexels.com/video-files/3997792/3997792-uhd_2732_1440_25fps.mp4" 
@@ -82,14 +94,15 @@ const Hero: React.FC = () => {
           />
         </video>
         
-        {!videoLoaded && (
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: "url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"
-            }}
-          />
-        )}
+        {/* Fallback background - always show until video loads */}
+        <div 
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+            videoLoaded && !videoError ? 'opacity-0' : 'opacity-100'
+          }`}
+          style={{
+            backgroundImage: "url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"
+          }}
+        />
         
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
@@ -123,7 +136,7 @@ const Hero: React.FC = () => {
                 size="lg" 
                 variant="outline"
                 onClick={() => document.querySelector('#servicios')?.scrollIntoView({ behavior: 'smooth' })}
-                className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-black px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300 backdrop-blur-sm transform hover:scale-105"
+                className="border-2 border-white/30 bg-white/10 text-white hover:bg-white hover:text-black px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300 backdrop-blur-sm transform hover:scale-105"
               >
                 {t('hero.services')}
               </Button>

@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -133,128 +134,201 @@ const TestimonialForm: React.FC = () => {
     }, 800);
   };
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50, 
+      scale: 0.9,
+      rotateX: -15 
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      rotateX: 0,
+      transition: { 
+        duration: 0.8, 
+        ease: "easeOut",
+        staggerChildren: 0.1
+      } 
+    },
+    exit: { 
+      opacity: 0, 
+      y: -50, 
+      scale: 0.8,
+      rotateX: 15,
+      transition: { 
+        duration: 0.6, 
+        ease: "easeIn" 
+      } 
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -30 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
+    },
+    exit: { 
+      opacity: 0, 
+      x: 30,
+      transition: { duration: 0.3, ease: "easeIn" }
+    }
+  };
+
+  const buttonVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5, delay: 0.3 }
+    },
+    exit: { 
+      opacity: 0, 
+      y: 20,
+      scale: 0.9,
+      transition: { duration: 0.4, ease: "easeIn" }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-pink-50 dark:bg-gray-900 flex items-center justify-center p-4 transition-all duration-500">
-      <div className={`w-full max-w-md transform transition-all duration-1000 ${
-        isVisible && !isExiting ? 'translate-y-0 opacity-100 scale-100 rotate-0' : 
-        isExiting ? 'animate-modern-exit' : 'translate-y-10 opacity-0 scale-95'
-      }`}>
-        <Card className="border-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black shadow-2xl backdrop-blur-lg animate-fade-in">
-          <FormHeader
-            language={language}
-            isDarkMode={isDarkMode}
-            onToggleLanguage={toggleLanguage}
-            onToggleDarkMode={toggleDarkMode}
-            translations={{
-              title: t.title,
-              titleHighlight: t.titleHighlight,
-              subtitle: t.subtitle
-            }}
-          />
-          
-          <CardContent className={`space-y-6 transition-all duration-700 ${
-            isExiting ? 'animate-content-exit' : 'animate-slide-in-from-bottom'
-          }`}>
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <FormField
-                  control={form.control}
-                  name="nombre"
-                  render={({ field }) => (
-                    <FormItem className={`transition-all duration-500 ${
-                      isExiting ? 'animate-field-exit' : 'animate-slide-in-from-left animation-delay-300'
-                    }`}>
-                      <FormLabel className="text-gray-200 font-medium">
-                        {t.nameLabel}
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          placeholder={t.namePlaceholder}
-                          className="border-2 border-transparent bg-white/10 text-white placeholder:text-gray-400 focus:border-pink-400 transition-all duration-300 hover:bg-white/20"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+      <AnimatePresence mode="wait">
+        {isVisible && (
+          <motion.div
+            key="form-container"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isExiting ? "exit" : "visible"}
+            exit="exit"
+            className="w-full max-w-md"
+          >
+            <Card className="border-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black shadow-2xl backdrop-blur-lg overflow-hidden">
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <FormHeader
+                  language={language}
+                  isDarkMode={isDarkMode}
+                  onToggleLanguage={toggleLanguage}
+                  onToggleDarkMode={toggleDarkMode}
+                  translations={{
+                    title: t.title,
+                    titleHighlight: t.titleHighlight,
+                    subtitle: t.subtitle
+                  }}
                 />
+              </motion.div>
+              
+              <CardContent className="space-y-6">
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <motion.div variants={itemVariants}>
+                      <FormField
+                        control={form.control}
+                        name="nombre"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-gray-200 font-medium">
+                              {t.nameLabel}
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                {...field}
+                                placeholder={t.namePlaceholder}
+                                className="border-2 border-transparent bg-white/10 text-white placeholder:text-gray-400 focus:border-pink-400 transition-all duration-300 hover:bg-white/20"
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </motion.div>
 
-                <FormField
-                  control={form.control}
-                  name="opinion"
-                  render={({ field }) => (
-                    <FormItem className={`transition-all duration-600 ${
-                      isExiting ? 'animate-field-exit' : 'animate-slide-in-from-right animation-delay-400'
-                    }`}>
-                      <FormLabel className="text-gray-200 font-medium">
-                        {t.opinionLabel}
-                      </FormLabel>
-                      <FormControl>
-                        <Textarea
-                          {...field}
-                          placeholder={t.opinionPlaceholder}
-                          className="border-2 border-transparent bg-white/10 text-white placeholder:text-gray-400 focus:border-pink-400 transition-all duration-300 resize-none hover:bg-white/20"
-                          maxLength={500}
-                          rows={8}
-                          style={{ minHeight: '160px', maxHeight: '160px' }}
-                        />
-                      </FormControl>
-                      <div className="flex justify-between items-center">
-                        <FormMessage />
-                        <span className="text-xs text-gray-400">
-                          {field.value?.length || 0}/500 {t.characters}
-                        </span>
-                      </div>
-                    </FormItem>
-                  )}
-                />
+                    <motion.div variants={itemVariants}>
+                      <FormField
+                        control={form.control}
+                        name="opinion"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-gray-200 font-medium">
+                              {t.opinionLabel}
+                            </FormLabel>
+                            <FormControl>
+                              <Textarea
+                                {...field}
+                                placeholder={t.opinionPlaceholder}
+                                className="border-2 border-transparent bg-white/10 text-white placeholder:text-gray-400 focus:border-pink-400 transition-all duration-300 resize-none hover:bg-white/20"
+                                maxLength={500}
+                                rows={8}
+                                style={{ minHeight: '160px', maxHeight: '160px' }}
+                              />
+                            </FormControl>
+                            <div className="flex justify-between items-center">
+                              <FormMessage />
+                              <span className="text-xs text-gray-400">
+                                {field.value?.length || 0}/500 {t.characters}
+                              </span>
+                            </div>
+                          </FormItem>
+                        )}
+                      />
+                    </motion.div>
 
-                <FormField
-                  control={form.control}
-                  name="calificacion"
-                  render={() => (
-                    <FormItem className={`transition-all duration-700 ${
-                      isExiting ? 'animate-field-exit' : ''
-                    }`}>
-                      <FormLabel className="text-gray-200 font-medium">
-                        {t.ratingLabel}
-                      </FormLabel>
-                      <FormControl>
-                        <StarRating
-                          selectedRating={selectedRating}
-                          onStarClick={handleStarClick}
-                          translations={{ ratings: t.ratings }}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                    <motion.div variants={itemVariants}>
+                      <FormField
+                        control={form.control}
+                        name="calificacion"
+                        render={() => (
+                          <FormItem>
+                            <FormLabel className="text-gray-200 font-medium">
+                              {t.ratingLabel}
+                            </FormLabel>
+                            <FormControl>
+                              <StarRating
+                                selectedRating={selectedRating}
+                                onStarClick={handleStarClick}
+                                translations={{ ratings: t.ratings }}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </motion.div>
 
-                <div className={`flex space-x-3 pt-4 transition-all duration-800 ${
-                  isExiting ? 'animate-buttons-exit' : 'animate-slide-in-from-bottom animation-delay-600'
-                }`}>
-                  <Button
-                    type="button"
-                    variant="outline"
-                    className="flex-1 border-2 border-orange-400 text-orange-400 bg-transparent hover:bg-orange-400/20 transition-all duration-300 hover:scale-105"
-                    onClick={handleCancel}
-                  >
-                    {t.cancel}
-                  </Button>
-                  <Button
-                    type="submit"
-                    disabled={isLoading}
-                    className="flex-1 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                  >
-                    {isLoading ? t.submitting : t.submit}
-                  </Button>
-                </div>
-              </form>
-            </Form>
-          </CardContent>
-        </Card>
-      </div>
+                    <motion.div 
+                      variants={buttonVariants}
+                      className="flex space-x-3 pt-4"
+                    >
+                      <Button
+                        type="button"
+                        variant="outline"
+                        className="flex-1 border-2 border-orange-400 text-orange-400 bg-transparent hover:bg-orange-400/20 transition-all duration-300 hover:scale-105"
+                        onClick={handleCancel}
+                      >
+                        {t.cancel}
+                      </Button>
+                      <Button
+                        type="submit"
+                        disabled={isLoading}
+                        className="flex-1 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                      >
+                        {isLoading ? t.submitting : t.submit}
+                      </Button>
+                    </motion.div>
+                  </form>
+                </Form>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

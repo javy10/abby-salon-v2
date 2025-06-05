@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Globe } from 'lucide-react';
 import {
   Select,
   SelectContent,
@@ -25,9 +24,9 @@ const LanguageSelector: React.FC = () => {
 
   return (
     <Select value={language} onValueChange={setLanguage}>
-      <SelectTrigger className="w-[120px] border-0 bg-transparent hover:bg-white/10 text-white">
+      <SelectTrigger className="w-[140px] border-0 bg-transparent hover:bg-white/10 text-white">
         <div className="flex items-center space-x-2">
-          <span className="text-base" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+          <span className="text-lg leading-none">
             {currentLanguage?.flag}
           </span>
           <span className="text-sm font-medium text-white">
@@ -43,7 +42,7 @@ const LanguageSelector: React.FC = () => {
             className="cursor-pointer text-white hover:bg-white/10 focus:bg-white/10"
           >
             <div className="flex items-center space-x-3">
-              <span className="text-base" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+              <span className="text-lg leading-none">
                 {lang.flag}
               </span>
               <span className="font-medium text-white">{lang.name}</span>
