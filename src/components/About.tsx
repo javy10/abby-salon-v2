@@ -21,7 +21,7 @@ const About: React.FC = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-600 rounded-3xl blur-2xl opacity-30 transform -rotate-6"></div>
               <img
-                src="https://img.freepik.com/vector-premium/vibrant-women-empowerment-vector-editioncelebrando-fuerza-femenina-vibrant-vectors_870326-177282239.jpg"
+                src="https://img.freepik.com/vector-gratis/mujer-pelo-rojo-largo_23-2147495851.jpg"
                 alt="Estilista profesional"
                 className="relative w-full max-w-md mx-auto rounded-3xl shadow-2xl object-cover"
               />
