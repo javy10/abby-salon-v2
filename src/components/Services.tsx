@@ -93,8 +93,7 @@ const Services: React.FC = () => {
               </div>
               
               <CardContent className="p-6">
-                <div className="flex justify-between items-center">
-                  <p className="text-sm text-muted-foreground flex-1 mr-4">{service.description}</p>
+                <div className="flex justify-center items-center">
                   <button 
                     onClick={scrollToContact}
                     className="text-primary font-semibold hover:text-primary/80 transition-colors duration-200 text-sm whitespace-nowrap"

@@ -65,7 +65,7 @@ const Testimonials: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-playfair font-bold mb-4">
-            {t('testimonials.title')} <span className="gradient-text">{t('testimonials.subtitle')}</span>
+            Lo que dicen <span className="gradient-text">nuestros clientes</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             {t('testimonials.description')}
