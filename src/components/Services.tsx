@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -19,7 +18,7 @@ const Services: React.FC = () => {
     { id: 'luna', name: 'Baños de Luna' },
     { id: 'pestanas', name: 'Extensiones de Pestañas' },
     { id: 'exfoliaciones', name: 'Exfoliaciones' },
-    { id: 'faciales', name: 'Faciales' },
+    { id: 'faciales', name: 'Faciales (Mujer y Hombre)' },
     { id: 'cejas', name: 'Cejas Permanentes' },
     { id: 'depilacion', name: 'Depilaciones' },
     { id: 'maquillaje', name: 'Maquillaje' }
@@ -72,7 +71,7 @@ const Services: React.FC = () => {
         </div>
 
         {/* Services Gallery Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-6">
           {filteredServices.map((service, index) => (
             <Card 
               key={index} 
@@ -80,11 +79,15 @@ const Services: React.FC = () => {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative overflow-hidden">
-                <img
-                  src={service.image}
-                  alt={service.description}
-                  className="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+                <div className="flex items-center justify-center h-56 w-full"> {/* Contenedor con ancho completo */}
+                  <div className="relative w-full h-full flex items-center justify-center overflow-hidden"> {/* Contenedor adicional para centrado */}
+                    <img
+                      src={service.image}
+                      alt={service.description}
+                      className="absolute inset-0 m-auto max-w-full max-h-full transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </div>
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 right-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                     <p className="text-sm opacity-90">{service.description}</p>

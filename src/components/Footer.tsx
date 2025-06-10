@@ -43,10 +43,16 @@ const Footer: React.FC = () => {
               se unen para realzar tu belleza natural.
             </p>
             <div className="flex space-x-4">
-              <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer">
+              <div 
+                onClick={() => window.open('https://www.instagram.com/aby_beltran17/', '_blank')}
+                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer"
+              >
                 <Instagram className="w-5 h-5 text-pink-400" />
               </div>
-              <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer">
+              <div 
+                onClick={() => window.open('https://www.facebook.com/profile.php?id=100084958413452', '_blank')}
+                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer"
+              >
                 <Facebook className="w-5 h-5 text-pink-400" />
               </div>
             </div>
@@ -119,16 +125,16 @@ const Footer: React.FC = () => {
             <div className="space-y-3 text-gray-300 dark:text-gray-400">
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-pink-400 flex-shrink-0" />
-                <span className="text-sm">Av. Belleza 123, Centro, Ciudad</span>
+                <span className="text-sm">Caserio El Campo, Concepcion Quezaltepeque, Chalatenango</span>
               </div>
-              <div className="flex items-center space-x-3">
+              {/* <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-pink-400 flex-shrink-0" />
                 <span className="text-sm">+1 (234) 567-8900</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-pink-400 flex-shrink-0" />
                 <span className="text-sm">info@abbyssalon.com</span>
-              </div>
+              </div> */}
             </div>
 
             {/* Schedule */}
@@ -136,8 +142,6 @@ const Footer: React.FC = () => {
               <h5 className="font-semibold text-white">Horarios:</h5>
               <div className="text-sm text-gray-300 dark:text-gray-400 space-y-1">
                 <p>Solo por citas</p>
-                <p>Lunes - Sábado: 9:00 - 19:00</p>
-                <p>Domingo: 10:00 - 16:00</p>
               </div>
             </div>
           </div>
@@ -152,7 +156,7 @@ const Footer: React.FC = () => {
             <div className="flex items-center space-x-2 text-gray-300 dark:text-gray-400 text-sm">
               <span>Hecho con</span>
               <Heart className="w-4 h-4 text-pink-400 fill-current" />
-              <span>para nuestras clientas</span>
+              <span>para nuestros clientes</span>
             </div>
           </div>
         </div>

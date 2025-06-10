@@ -22,7 +22,7 @@ const About: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-600 rounded-3xl blur-2xl opacity-30 transform -rotate-6"></div>
               <img
                 src="https://cdn.pixabay.com/photo/2022/04/13/16/46/girl-7130668_1280.png"
-                alt="Estilista profesional pelirroja"
+                alt="Estilista profesional"
                 className="relative w-full max-w-md mx-auto rounded-3xl shadow-2xl object-cover"
               />
             </div>
@@ -37,7 +37,7 @@ const About: React.FC = () => {
               
               <div className="space-y-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                 <p>
-                  Soy <strong className="text-pink-600 dark:text-pink-400">María González</strong>, estilista profesional con más de 10 años de experiencia 
+                  Soy <strong className="text-pink-600 dark:text-pink-400">Abby Beltrán</strong>, cuento con más de 1 año de experiencia 
                   en el mundo de la belleza. Mi pasión por realzar la belleza natural de cada persona 
                   me ha llevado a especializarme en las últimas tendencias y técnicas.
                 </p>
@@ -49,8 +49,7 @@ const About: React.FC = () => {
                 </p>
                 
                 <p>
-                  Continúo formándome constantemente en las mejores academias internacionales 
-                  para ofrecerte siempre los tratamientos más innovadores y efectivos.
+                  Continúo formándome constantemente para ofrecerte siempre los tratamientos más innovadores y efectivos.
                 </p>
               </div>
             </div>
@@ -60,18 +59,18 @@ const About: React.FC = () => {
               <div className="bg-white/70 dark:bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-gray-200 dark:border-white/20">
                 <h4 className="font-semibold text-pink-600 dark:text-pink-400 mb-2">Certificaciones</h4>
                 <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
-                  <li>• L'Oréal Professional</li>
-                  <li>• Redken Certified</li>
-                  <li>• Wella Master</li>
+                  <li>• Cosmetología</li>
+                  <li>• Técnica Classic</li>
+                  <li>• Técnica Rimel</li>
                 </ul>
               </div>
               
               <div className="bg-white/70 dark:bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-gray-200 dark:border-white/20">
                 <h4 className="font-semibold text-pink-600 dark:text-pink-400 mb-2">Experiencia</h4>
                 <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
-                  <li>• +10 años</li>
-                  <li>• +2000 clientes</li>
-                  <li>• Eventos VIP</li>
+                  <li>• +1 año</li>
+                  <li>• +100 clientes</li>
+                  <li>• Personalizaciones</li>
                 </ul>
               </div>
             </div>
