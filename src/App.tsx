@@ -2,7 +2,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Index from '@/pages/Index';
 import NotFound from '@/pages/NotFound';
-import TestimonialForm from '@/pages/TestimonialForm';
 import { Toaster } from '@/components/ui/toaster';
 
 function App() {
@@ -11,7 +10,6 @@ function App() {
       <div className="min-h-screen bg-background">
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/opiniones" element={<TestimonialForm />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Toaster />
