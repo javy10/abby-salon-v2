@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -10,7 +9,6 @@ import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
     phone: '',
     service: ''
   });
@@ -91,16 +89,6 @@ const Contact: React.FC = () => {
                     onChange={handleInputChange}
                     className="bg-white/70 dark:bg-white/20 border-gray-200 dark:border-white/30 text-gray-800 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
                   />
-                  
-                  <Input
-                    name="email"
-                    type="email"
-                    placeholder="Tu email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="bg-white/70 dark:bg-white/20 border-gray-200 dark:border-white/30 text-gray-800 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
-                  />
-                  
                   <Input
                     name="phone"
                     placeholder="Tu teléfono"
@@ -108,7 +96,6 @@ const Contact: React.FC = () => {
                     onChange={handleInputChange}
                     className="bg-white/70 dark:bg-white/20 border-gray-200 dark:border-white/30 text-gray-800 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
                   />
-                  
                   <Select onValueChange={handleServiceChange}>
                     <SelectTrigger className="bg-white/70 dark:bg-white/20 border-gray-200 dark:border-white/30 text-gray-800 dark:text-white">
                       <SelectValue placeholder="Selecciona un servicio" />
